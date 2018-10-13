@@ -1,4 +1,4 @@
-# sheridan-go
+# Sheridan GO - Android App
 
 ![Sheridan GO Logo](/image-resources/Sheridan-GO-Logo.png?raw=true "Sheridan GO")
 
