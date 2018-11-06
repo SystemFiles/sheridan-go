@@ -1,4 +1,0 @@
-<resources>
-    <string name="app_name">Sheridan GO App</string>
-    <string name="address_text">"Name: %1$s \n Address: %2$s \n Timestamp: %3$tr"</string>
-</resources>

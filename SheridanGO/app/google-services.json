@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "3318199892",
+    "firebase_url": "https://sheridangoapp.firebaseio.com",
+    "project_id": "sheridangoapp",
+    "storage_bucket": "sheridangoapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:3318199892:android:86c34d90fb40dc38",
+        "android_client_info": {
+          "package_name": "ca.sykesdev.sheridango"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "3318199892-5dcr7vhj6jkcphrva0un198241qmldfc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA3pdjaw-RVlUPIrswE9zZQbIWszHkFyjU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
