@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp" >
+
+    <TextView
+        android:id="@+id/txtPropertyName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_property_string_item_value"
+        android:textSize="22dp" />
+
+    <TextView
+        android:id="@+id/txtPropertyType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:text="@string/txt_property_string_item_value" />
+
+    <TextView
+        android:id="@+id/txtPropertyValue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:text="@string/txt_property_number_item_value" />
+
+    <TextView
+        android:id="@+id/txtPropertyInvestAmount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:text="@string/txt_property_number_item_value" />
+
+</LinearLayout>

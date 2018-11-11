@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="types">
+        <item>airport</item>
+        <item>bank</item>
+        <item>amusement_park</item>
+        <item>aquarium</item>
+        <item>bakery</item>
+        <item>casino</item>
+        <item>church</item>
+        <item>city_hall</item>
+        <item>gym</item>
+        <item>hospital</item>
+        <item>zoo</item>
+        <item>train_station</item>
+        <item>stadium</item>
+        <item>shopping_mall</item>
+        <item>night_club</item>
+        <item>movie_theater</item>
+        <item>library</item>
+        <item>locality</item>
+        <item>point_of_interest</item>
+        <item>country</item>
+    </string-array>
+    <integer-array name="types_values">
+        <item>2000000</item>
+        <item>500000</item>
+        <item>1000000</item>
+        <item>1000000</item>
+        <item>50000</item>
+        <item>50000000</item>
+        <item>20000</item>
+        <item>120000</item>
+        <item>200000</item>
+        <item>666666</item>
+        <item>600000</item>
+        <item>325000</item>
+        <item>85000</item>
+        <item>165000</item>
+        <item>16000</item>
+        <item>125000</item>
+        <item>115000</item>
+        <item>10000000</item>
+        <item>20000</item>
+        <item>100000000</item>
+    </integer-array>
+
+</resources>
