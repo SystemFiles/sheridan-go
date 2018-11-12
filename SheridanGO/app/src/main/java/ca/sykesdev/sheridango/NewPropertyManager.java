@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -73,6 +74,7 @@ public class NewPropertyManager extends AppCompatActivity {
             photoTask.execute();
         }
 
+        // Preview invest cost and stuff...
         txtEnterInvestAmount.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -101,6 +103,14 @@ public class NewPropertyManager extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 // DO NOTHING
+            }
+        });
+
+        // Finally handle investing here..
+        btnBuy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Invest...
             }
         });
     }

@@ -33,6 +33,7 @@
     <string name="hint_enter_percent_buy_text">enter amount</string>
     <string name="text_user_hit_level_cap">Congratulations!! You have successfully hit level cap! Dont worry, you can still play the game</string>
     <string name="btn_refresh_text">Refresh</string>
+    <string name="btn_refresh_loading_text">Loading...</string>
 
     <string name="txt_property_string_item_value">%s</string>
     <string name="txt_property_number_item_value">%d</string>

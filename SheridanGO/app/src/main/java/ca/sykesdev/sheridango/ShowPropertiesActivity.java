@@ -276,11 +276,12 @@ public class ShowPropertiesActivity extends AppCompatActivity {
     /**
      * Task used to request place information for nearby places..
      */
-    private class RequestPlacesTask extends AsyncTask<Double, Void, ArrayList<Property>> {
+    private class RequestPlacesTask extends AsyncTask<Double, Integer, ArrayList<Property>> {
 
         @Override
         protected void onPreExecute() {
-            Log.i(TAG, "onPreExecute: Retreiving Places Information");
+            Log.i(TAG, "onPreExecute: Retrieving Places Information..");
+            btnRefresh.setText(getString(R.string.btn_refresh_loading_text));
         }
 
         @Override
@@ -296,6 +297,11 @@ public class ShowPropertiesActivity extends AppCompatActivity {
 
             // Check database for existing data for nearby properties (if NONE, then initialize them)
             mPropertyDataRef.addValueEventListener(propertyDataListener);
+
+            Log.i(TAG, "onPreExecute: Done getting places information!");
+
+            // Reset refresh button
+            btnRefresh.setText(getString(R.string.btn_refresh_text));
         }
     }
 
