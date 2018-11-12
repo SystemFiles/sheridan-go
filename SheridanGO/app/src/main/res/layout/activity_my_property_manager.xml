@@ -7,7 +7,7 @@
     tools:context=".MyPropertyManager">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imgPropertyPhoto"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="1dp"
@@ -32,7 +32,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/imgPropertyPhoto" />
 
     <TextView
         android:id="@+id/lblInvest"
@@ -143,8 +143,8 @@
         android:layout_marginStart="440dp"
         android:layout_marginTop="435dp"
         android:text="@string/txt_cost_text"
-        app:layout_constraintBottom_toTopOf="@+id/imageView"
-        app:layout_constraintEnd_toStartOf="@+id/imageView"
+        app:layout_constraintBottom_toTopOf="@+id/imgPropertyPhoto"
+        app:layout_constraintEnd_toStartOf="@+id/imgPropertyPhoto"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
@@ -156,8 +156,8 @@
         android:layout_marginStart="440dp"
         android:layout_marginTop="580dp"
         android:text="@string/txt_sell_amount_text"
-        app:layout_constraintBottom_toTopOf="@+id/imageView"
-        app:layout_constraintEnd_toStartOf="@+id/imageView"
+        app:layout_constraintBottom_toTopOf="@+id/imgPropertyPhoto"
+        app:layout_constraintEnd_toStartOf="@+id/imgPropertyPhoto"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />

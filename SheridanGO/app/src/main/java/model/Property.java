@@ -1,16 +1,13 @@
 package model;
 
-import android.content.Context;
-
-import java.util.ArrayList;
-
-import ca.sykesdev.sheridango.MainActivity;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 /**
  * Class used to define a property
  * and its needed information and methods
  */
-public class Property {
+public class Property implements Parcelable {
     private String mID, mName, mPhotoID, mType;
     private double mCost, mInvestAmount, mLat, mLong;
 
@@ -35,6 +32,29 @@ public class Property {
         this.mLat = mLat;
         this.mLong = mLong;
     }
+
+    protected Property(Parcel in) {
+        mID = in.readString();
+        mName = in.readString();
+        mPhotoID = in.readString();
+        mType = in.readString();
+        mCost = in.readDouble();
+        mInvestAmount = in.readDouble();
+        mLat = in.readDouble();
+        mLong = in.readDouble();
+    }
+
+    public static final Creator<Property> CREATOR = new Creator<Property>() {
+        @Override
+        public Property createFromParcel(Parcel in) {
+            return new Property(in);
+        }
+
+        @Override
+        public Property[] newArray(int size) {
+            return new Property[size];
+        }
+    };
 
     public String getmID() {
         return mID;
@@ -74,5 +94,22 @@ public class Property {
 
     public double getmLong() {
         return mLong;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(mID);
+        dest.writeString(mName);
+        dest.writeString(mPhotoID);
+        dest.writeString(mType);
+        dest.writeDouble(mCost);
+        dest.writeDouble(mInvestAmount);
+        dest.writeDouble(mLat);
+        dest.writeDouble(mLong);
     }
 }

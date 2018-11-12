@@ -3,14 +3,17 @@ package ca.sykesdev.sheridango;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.AsyncTask;
+import android.os.Parcelable;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -30,6 +33,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+import model.ClickListener;
 import model.PlacesHelper;
 import model.PlacesRecyclerAdapter;
 import model.Property;
@@ -59,6 +63,7 @@ public class ShowPropertiesActivity extends AppCompatActivity {
     private SharedPreferences curUserPrefs;
     public static final int SHOW_PROPERTIES_ACTIVITY = 1; // IMPORTANT (DO NOT DELETE)
     private final String TAG = "SHOW_PROPERTIES_ACT";
+    public static final String PROPERTY_LIST_INTENT_KEY = "propertyArrayList";
     private final int ERROR_DIALOG_REQUEST = 9001;
     private final String ACCESS_FINE_LOCATION_PERM = Manifest.permission.ACCESS_FINE_LOCATION;
     private final String ACCESS_COARSE_LOCATION_PERM = Manifest.permission.ACCESS_COARSE_LOCATION;
@@ -101,7 +106,7 @@ public class ShowPropertiesActivity extends AppCompatActivity {
      */
     private void listPlaces() {
 
-        Log.i(TAG, "loadPlaces: Listing properties into recyclerView...");
+        Log.i(TAG, "listPlaces: Listing properties into recyclerView...");
 
         // For performance optimization we set each item to a fixed size..
         rAvailablePropertyView.setHasFixedSize(true);
@@ -118,7 +123,18 @@ public class ShowPropertiesActivity extends AppCompatActivity {
         rAvailablePropertyView.setLayoutManager(manager);
 
         // Create the adapter and assign it to the RecyclerView
-        PlacesRecyclerAdapter adapter = new PlacesRecyclerAdapter(propertiesList);
+        PlacesRecyclerAdapter adapter = new PlacesRecyclerAdapter(propertiesList, new ClickListener() {
+            @Override
+            public void onPositionClicked(int position) {
+                Intent newPropertyIntent = new Intent(getApplicationContext(),
+                        NewPropertyManager.class);
+
+                // pass property information to intent
+                newPropertyIntent.putExtra(PROPERTY_LIST_INTENT_KEY,
+                        propertiesList.get(position));
+                startActivityForResult(newPropertyIntent, SHOW_PROPERTIES_ACTIVITY);
+            }
+        });
         rAvailablePropertyView.setAdapter(adapter);
     }
 
@@ -280,9 +296,6 @@ public class ShowPropertiesActivity extends AppCompatActivity {
 
             // Check database for existing data for nearby properties (if NONE, then initialize them)
             mPropertyDataRef.addValueEventListener(propertyDataListener);
-
-            // Start Listing properties afterwards
-
         }
     }
 
@@ -311,4 +324,16 @@ public class ShowPropertiesActivity extends AppCompatActivity {
             Log.i(TAG, "onProviderDisabled: " + provider);
         }
     };
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (requestCode == SHOW_PROPERTIES_ACTIVITY) {
+            if (resultCode == RESULT_OK) {
+                Log.i(TAG, "onActivityResult: Returned from new property manager...");
+                // Don't need to do anything here..All is working properly
+            } else {
+                Log.e(TAG, "onActivityResult: Problem occurred..");
+            }
+        }
+    }
 }

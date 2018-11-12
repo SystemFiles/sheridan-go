@@ -7,7 +7,7 @@
     tools:context=".NewPropertyManager">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imgPropertyPhoto"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="350dp"
@@ -31,7 +31,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/imgPropertyPhoto" />
 
     <TextView
         android:id="@+id/txtPropertyInfo"
@@ -76,7 +76,7 @@
             android:text="@string/lbl_select_buy_percent" />
 
         <EditText
-            android:id="@+id/txtSellPercentage"
+            android:id="@+id/txtBuyPercentage"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -85,7 +85,8 @@
             android:inputType="number" />
 
         <Button
-            android:id="@+id/btnSellShares"
+            android:id="@+id/btnBuyShares"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"
             android:layout_width="40dp"
             android:layout_height="50dp"
             android:layout_weight="1"

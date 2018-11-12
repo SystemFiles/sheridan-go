@@ -1,6 +1,7 @@
 package model;
 
 import android.content.Context;
+import android.media.Image;
 import android.util.Log;
 
 import org.json.JSONArray;

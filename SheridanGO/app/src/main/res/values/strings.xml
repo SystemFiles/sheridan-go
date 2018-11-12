@@ -36,4 +36,5 @@
 
     <string name="txt_property_string_item_value">%s</string>
     <string name="txt_property_number_item_value">%d</string>
+    <string name="btn_show_details_text">Show Details</string>
 </resources>
