@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MyPropertyManager">
+
+    <ImageView
+        android:id="@+id/imgPropertyPhoto"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="350dp"
+        android:contentDescription="@string/places_image_desc_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@color/colorPrimary" />
+
+    <TextView
+        android:id="@+id/txtNameOfProperty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="176dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="176dp"
+        android:layout_marginBottom="308dp"
+        android:textSize="22sp"
+        android:text="@string/place_title_default"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgPropertyPhoto" />
+
+    <TextView
+        android:id="@+id/lblInvest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="29dp"
+        android:layout_marginEnd="300dp"
+        android:layout_marginBottom="1dp"
+        android:text="@string/lbl_invest_more_text"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtNameOfProperty" />
+
+    <TextView
+        android:id="@+id/lblSellShares"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="29dp"
+        android:layout_marginEnd="300dp"
+        android:text="@string/lbl_invest_more_text"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtNameOfProperty" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="395dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="244dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblInvest">
+
+        <TextView
+            android:id="@+id/txtInvestLable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/lbl_invest_percent_text" />
+
+        <EditText
+            android:id="@+id/txtInvestMorePercent"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="@string/txtfield_enter_invest_value_text"
+            android:inputType="number" />
+
+        <Button
+            android:id="@+id/btnInvestMore"
+            android:layout_width="40dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:text="@string/btn_buy_text" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="395dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="150dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblInvest">
+
+        <TextView
+            android:id="@+id/txtSellLable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/lbl_sell_percentage_text" />
+
+        <EditText
+            android:id="@+id/txtSellPercentage"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="@string/txtField_sell_amount_hint"
+            android:inputType="number" />
+
+        <Button
+            android:id="@+id/btnSellShares"
+            android:layout_width="40dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:text="@string/btn_sell_text" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txtCashCost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="440dp"
+        android:layout_marginTop="435dp"
+        android:text="@string/txt_cost_text"
+        app:layout_constraintBottom_toTopOf="@+id/imgPropertyPhoto"
+        app:layout_constraintEnd_toStartOf="@+id/imgPropertyPhoto"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/txtSellCashAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="440dp"
+        android:layout_marginTop="580dp"
+        android:text="@string/txt_sell_amount_text"
+        app:layout_constraintBottom_toTopOf="@+id/imgPropertyPhoto"
+        app:layout_constraintEnd_toStartOf="@+id/imgPropertyPhoto"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+</android.support.constraint.ConstraintLayout>

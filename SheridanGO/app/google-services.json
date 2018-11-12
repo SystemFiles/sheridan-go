@@ -1,27 +1,35 @@
 {
   "project_info": {
-    "project_number": "3318199892",
-    "firebase_url": "https://sheridangoapp.firebaseio.com",
-    "project_id": "sheridangoapp",
-    "storage_bucket": "sheridangoapp.appspot.com"
+    "project_number": "456457307752",
+    "firebase_url": "https://sheridan-go-database.firebaseio.com",
+    "project_id": "sheridan-go-database",
+    "storage_bucket": "sheridan-go-database.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:3318199892:android:86c34d90fb40dc38",
+        "mobilesdk_app_id": "1:456457307752:android:86c34d90fb40dc38",
         "android_client_info": {
           "package_name": "ca.sykesdev.sheridango"
         }
       },
       "oauth_client": [
         {
-          "client_id": "3318199892-5dcr7vhj6jkcphrva0un198241qmldfc.apps.googleusercontent.com",
+          "client_id": "456457307752-cndb055tkhu7ui6464u5t2nqk6h0avhe.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ca.sykesdev.sheridango",
+            "certificate_hash": "cd0e8b4d0c34c4fb14f15ad07723818b331dc984"
+          }
+        },
+        {
+          "client_id": "456457307752-0voe5uh4k9j4v8trs9ql8on2aoq1dpm5.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyA3pdjaw-RVlUPIrswE9zZQbIWszHkFyjU"
+          "current_key": "AIzaSyD87wuw6DDhSK65PBCFm25T2FXesUWNWp4"
         }
       ],
       "services": {
@@ -29,8 +37,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "456457307752-0voe5uh4k9j4v8trs9ql8on2aoq1dpm5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2

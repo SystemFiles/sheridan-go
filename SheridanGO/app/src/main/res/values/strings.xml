@@ -1,3 +1,41 @@
 <resources>
     <string name="app_name">Sheridan GO</string>
+    <string name="btn_my_properties_text">My Properties</string>
+    <string name="txt_username_displayname">%s</string>
+    <string name="txt_cash_text_value">Cash: $%.2f</string>
+    <string name="txt_property_value_text">Property Value Owned: $%.2f</string>
+    <string name="btn_show_available_properties_text">Show Available Properties</string>
+    <string name="btn_out_of_cash_text">Out of Cash?</string>
+    <string name="lable_property_view_text">Nearby Property View</string>
+    <string name="txt_revenue_value_text">Revenue Gained: $%.2f</string>
+    <string name="default_building_icon_desc">Building Icon</string>
+    <string name="login_title_text">What would you like to be called?</string>
+    <string name="hint_enter_displayName_text">enter your display name</string>
+    <string name="btn_sign_in_text">Sign In!</string>
+    <string name="title_my_properties_list_text">My Properties</string>
+    <string name="title_available_properties_text">Available Properties</string>
+    <string name="lbl_invest_more_text">Invest more!</string>
+    <string name="place_title_default">Sheridan College</string>
+    <string name="lbl_invest_percent_text">Invest Percentage</string>
+    <string name="txtfield_enter_invest_value_text">enter invest amt</string>
+    <string name="btn_buy_text">BUY</string>
+    <string name="lbl_sell_percentage_text">Sell Percentage</string>
+    <string name="txtField_sell_amount_hint">enter sell amt</string>
+    <string name="btn_sell_text">SELL</string>
+    <string name="txt_cost_text">Cost: $%.2f</string>
+    <string name="txt_sell_amount_text">Sell for: $%.2f</string>
+    <string name="places_image_desc_text">Places Image</string>
+    <string name="txt_new_property_title">%s</string>
+    <string name="txt_property_info_place">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vulputate urna eu justo vulputate, nec eleifend nunc placerat. Quisque vulputate nunc nibh, sed euismod sapien vehicula et. Maecenas quis est vel nibh lacinia blandit. Pellentesque a tellus ipsum. Ut ipsum elit, tristique ut eleifend sit amet, fermentum at mi. Sed et gravida leo. Donec bibendum sem odio, vel commodo neque tempor vitae. Nullam vulputate lorem non lacus gravida porttitor. Suspendisse vel justo at felis pretium ultrices. Fusce in eros condimentum, venenatis turpis a, vehicula sem. Pellentesque quis molestie sem, a lobortis arcu. Nunc tincidunt sit amet sem sit amet blandit.</string>
+    <string name="string_txt_property_info_place">%s</string>
+    <string name="lbl_invest_in_property_text">Invest in Property</string>
+    <string name="lbl_select_buy_percent">Select Percentage</string>
+    <string name="hint_enter_percent_buy_text">enter amount</string>
+    <string name="text_user_hit_level_cap">Congratulations!! You have successfully hit level cap! Dont worry, you can still play the game</string>
+    <string name="btn_refresh_text">Refresh</string>
+    <string name="btn_refresh_loading_text">Loading...</string>
+
+    <string name="txt_property_string_item_value">%s</string>
+    <string name="txt_property_number_item_value">%d</string>
+    <string name="btn_show_details_text">Show Details</string>
 </resources>
