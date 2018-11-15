@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
+    
     <application
 
         android:allowBackup="true"
@@ -39,6 +39,8 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".MyPropertyManager" />
         <activity android:name=".NewPropertyManager"></activity>
+        
+        <receiver android:name=".AlarmReceiver" android:process=":remote" />
     </application>
-
+    
 </manifest>

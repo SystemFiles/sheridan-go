@@ -86,7 +86,6 @@ public class PlacesRecyclerAdapter extends RecyclerView.Adapter<PlacesRecyclerAd
         String format = "%s";
         String nFormat = "%.2f";
 
-        // TODO: Fix error where values in Recycler view only represent initialized place values for cost and InvestAmt...
         // Set the text for each place...
         placeViewHolder.mTxtPlaceName.setText(String.format(format,
                 mProperties.get(position).getmName()));

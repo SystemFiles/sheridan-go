@@ -34,6 +34,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity{
 
@@ -45,6 +47,8 @@ public class MainActivity extends AppCompatActivity{
     public static final String USER_PROPERTY_TOTAL_VALUE = "totalPropertyValue";
     public static final String USER_REVENUE_GAIN_KEY = "totalRevenueValue";
     public static final String USER_MY_PROPERTIES_KEY = "currentProperties";
+    public static final String USER_PROP_OWNED_AMOUNT = "propOwnedAmount";
+    public static final String USER_PROP_CASH_BENEFITS_AMOUNT = "cashBenefitsAmount";
 
     public static final int MAIN_ACTIVITY = 0; // IMPORTANT (DO NOT DELETE)
     private final String TAG = "MAIN_ACTIVITY";
@@ -54,6 +58,7 @@ public class MainActivity extends AppCompatActivity{
     private boolean mLocationPermissionsGranted = false;
     private final int LOCATION_PERMISSION_REQUEST_CODE = 9002;
     private SharedPreferences curUserPrefs;
+    private TimerTask incomeTmrTask;
 
     // firebase DB variables
     private static final FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
@@ -65,7 +70,6 @@ public class MainActivity extends AppCompatActivity{
     private TextView txtMyProperties, txtDisplayName, txtUserCash, txtPropertyValue,
             txtRevenueGained;
     private ProgressBar progAggregatePropertyValue;
-
     private Button btnShowAvailableProperties, btnOpenPremiumCashShop;
 
     @Override
@@ -111,8 +115,54 @@ public class MainActivity extends AppCompatActivity{
         txtDisplayName.setText(String.format(getString(R.string.txt_username_displayname),
                 curUserPrefs.getString(DISPLAY_NAME_KEY, "NULL")));
 
-        // Setup Button Listeners
+        // Create incomeTimer for handling income from properties
+        incomeTmrTask = new TimerTask() {
+            @Override
+            public void run() {
+                Log.i(TAG, "TimerRun: Getting cash income from all owned properties...");
 
+                // Update income for current user..
+                mCurUserDataRef.
+                        addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        double amountTotalPaid = 0;
+
+                        // Get total amount that needs to be paid out to the user this hour...
+                        for (DataSnapshot ds : dataSnapshot.
+                                child(USER_MY_PROPERTIES_KEY).getChildren()) {
+                            amountTotalPaid += (double) ds.
+                                    child(USER_PROP_CASH_BENEFITS_AMOUNT).getValue();
+                        }
+
+                        // Set users new cash amount to current plus the total paid for this hour
+                        mCurUserDataRef.child(USER_CASH_KEY).
+                                setValue(dataSnapshot.child(USER_CASH_KEY).
+                                        getValue(Double.class) + amountTotalPaid);
+
+                        // Also remember to update the users revenue
+                        mCurUserDataRef.child(USER_REVENUE_GAIN_KEY).setValue(
+                                dataSnapshot.child(USER_REVENUE_GAIN_KEY).getValue(Double.class)
+                                + amountTotalPaid
+                        );
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        // Display error
+                        Log.e(TAG, "onCancelled: Error: Security access or " +
+                                "Remote server error..cannot access database.");
+                    }
+                });
+            }
+        };
+
+
+        // Start the onGoing timer to get cash!
+        Timer incomeTmr = new Timer();
+        incomeTmr.schedule(incomeTmrTask, 10000L, 12000L);
+
+        // Setup Button Listeners
         /**
          * Open the available properties window
          */
@@ -306,7 +356,11 @@ public class MainActivity extends AppCompatActivity{
                     for (DataSnapshot ds : dataSnapshot.getChildren()) {
                         if (ds.getKey().equalsIgnoreCase(displayName)) {
                             for (DataSnapshot valueObject : ds.getChildren()) {
-                                user_data.add(valueObject.getValue().toString());
+                                // Make sure we are not loading in property names into dashboard as
+                                // we don't need that information in this Activity.
+                                if (!(valueObject.getKey().equalsIgnoreCase("currentProperties"))) {
+                                    user_data.add(valueObject.getValue().toString());
+                                }
                             }
                         }
                     }
