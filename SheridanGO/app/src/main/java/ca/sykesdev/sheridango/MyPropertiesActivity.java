@@ -2,7 +2,6 @@ package ca.sykesdev.sheridango;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.AsyncTask;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -22,7 +21,6 @@ import java.util.ArrayList;
 
 import model.ClickListener;
 import model.MyPropertysRecyclerAdapter;
-import model.PlacesRecyclerAdapter;
 import model.Property;
 
 public class MyPropertiesActivity extends AppCompatActivity {
@@ -59,6 +57,9 @@ public class MyPropertiesActivity extends AppCompatActivity {
         // Load owned properties into arraylist and init controls
         rMyPropertyView = findViewById(R.id.rMyPropertyView);
 
+        /**
+         * Load in properties owned by the user..
+         */
         mOwnedPropertiesReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

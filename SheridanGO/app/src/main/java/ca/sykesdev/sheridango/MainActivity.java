@@ -33,6 +33,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -41,6 +42,7 @@ public class MainActivity extends AppCompatActivity{
 
     // This applications requestCode and other important constants
     public static final String DISPLAY_NAME_KEY = "displayName";
+    public static final String APPLICATION_EXIT_TIME_KEY = "exitTime";
     public static final String USER_LIST_KEY_PARENT = "users";
     public static final String PROPERTY_DB_REF_KEY = "properties";
     public static final String USER_CASH_KEY = "totalCash";
@@ -111,56 +113,22 @@ public class MainActivity extends AppCompatActivity{
                     "without correct Google Play Services");
         }
 
+        if (curUserPrefs.getString(DISPLAY_NAME_KEY, "NULL").
+                equalsIgnoreCase("NULL")) {
+            Log.e(TAG, "onCreate: Cannot pay for offline time when this " +
+                    "is the first time the user is opening the app!");
+
+        } else {
+            // Pay the user for time since they last opened the app
+            payForOfflineTime();
+
+            // Setup paying service for the user
+            setupPayServices();
+        }
+
         // Set Name for the current user HERE (Don't need to update constantly for obvious reasons)
         txtDisplayName.setText(String.format(getString(R.string.txt_username_displayname),
                 curUserPrefs.getString(DISPLAY_NAME_KEY, "NULL")));
-
-        // Create incomeTimer for handling income from properties
-        incomeTmrTask = new TimerTask() {
-            @Override
-            public void run() {
-                Log.i(TAG, "TimerRun: Getting cash income from all owned properties...");
-
-                // Update income for current user..
-                mCurUserDataRef.
-                        addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        double amountTotalPaid = 0;
-
-                        // Get total amount that needs to be paid out to the user this hour...
-                        for (DataSnapshot ds : dataSnapshot.
-                                child(USER_MY_PROPERTIES_KEY).getChildren()) {
-                            amountTotalPaid += (double) ds.
-                                    child(USER_PROP_CASH_BENEFITS_AMOUNT).getValue();
-                        }
-
-                        // Set users new cash amount to current plus the total paid for this hour
-                        mCurUserDataRef.child(USER_CASH_KEY).
-                                setValue(dataSnapshot.child(USER_CASH_KEY).
-                                        getValue(Double.class) + amountTotalPaid);
-
-                        // Also remember to update the users revenue
-                        mCurUserDataRef.child(USER_REVENUE_GAIN_KEY).setValue(
-                                dataSnapshot.child(USER_REVENUE_GAIN_KEY).getValue(Double.class)
-                                + amountTotalPaid
-                        );
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-                        // Display error
-                        Log.e(TAG, "onCancelled: Error: Security access or " +
-                                "Remote server error..cannot access database.");
-                    }
-                });
-            }
-        };
-
-
-        // Start the onGoing timer to get cash!
-        Timer incomeTmr = new Timer();
-        incomeTmr.schedule(incomeTmrTask, 10000L, 12000L);
 
         // Setup Button Listeners
         /**
@@ -187,6 +155,75 @@ public class MainActivity extends AppCompatActivity{
                 Log.e(TAG, "User tried to use a feature not implemented yet.");
             }
         });
+
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        // Set time when user exited the application
+        SharedPreferences.Editor editor = curUserPrefs.edit();
+        editor.putLong(APPLICATION_EXIT_TIME_KEY, System.currentTimeMillis());
+        editor.apply();
+
+        Log.i(TAG, "onDestroy: Saved time of app exit.");
+    }
+
+    /**
+     * Save time of exit when destroying application
+     */
+
+    /**
+     * Pay the user for the time since they have been offline
+     */
+    private  void payForOfflineTime() {
+        long timeSinceExit = (System.currentTimeMillis() -
+                curUserPrefs.getLong(APPLICATION_EXIT_TIME_KEY, 0));
+        getIncomeForTime(timeSinceExit);
+        Log.i(TAG, "payForOfflineTime: Paid user for time since they have been offline.");
+    }
+
+    /**
+     * Gets income rel to the time of last payout...
+     * @param timeMilisFromLastExecute Time in miliseconds since last execution
+     */
+    private void getIncomeForTime(final long timeMilisFromLastExecute) {
+        Log.i(TAG, "GetIncomeForTime: Getting cash income from all owned properties...");
+        final double TIME_HOURS = (timeMilisFromLastExecute / 1000.0 / 60.0 / 60.0);
+
+        // Update income for current user..
+        mCurUserDataRef.
+                addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        double amountTotalPaid = 0;
+
+                        // Get total amount that needs to be paid out to the user this hour...
+                        for (DataSnapshot ds : dataSnapshot.
+                                child(USER_MY_PROPERTIES_KEY).getChildren()) {
+                            amountTotalPaid += ((double) ds.
+                                    child(USER_PROP_CASH_BENEFITS_AMOUNT).getValue()) * TIME_HOURS;
+                        }
+
+                        // Set users new cash amount to current plus the total paid for this hour
+                        mCurUserDataRef.child(USER_CASH_KEY).
+                                setValue((double) dataSnapshot.child(USER_CASH_KEY).
+                                        getValue() + amountTotalPaid);
+
+                        // Also remember to update the users revenue
+                        mCurUserDataRef.child(USER_REVENUE_GAIN_KEY).setValue((double)
+                                dataSnapshot.child(USER_REVENUE_GAIN_KEY).getValue()
+                                        + amountTotalPaid
+                        );
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        // Display error
+                        Log.e(TAG, "onCancelled: Error: Security access or " +
+                                "Remote server error..cannot access database.");
+                    }
+                });
 
     }
 
@@ -339,6 +376,23 @@ public class MainActivity extends AppCompatActivity{
     }
 
     /**
+     * Setup the services required to pay the user for properties owned
+     */
+    private void setupPayServices() {
+        // Create incomeTimer for handling income from properties
+        incomeTmrTask = new TimerTask() {
+            @Override
+            public void run() {
+                getIncomeForTime(10000L);
+            }
+        };
+
+        // Start the onGoing timer to get cash!
+        Timer incomeTmr = new Timer();
+        incomeTmr.schedule(incomeTmrTask, 10000L, 12000L);
+    }
+
+    /**
      * Listens for changes in user data such as cash, property values, etc. Then updates data fields
      * accordingly. Should be running asyncronously all the time, so there is no need to call
      * updateDashValues anywhere else..
@@ -381,6 +435,12 @@ public class MainActivity extends AppCompatActivity{
         }
     };
 
+    /**
+     * Result from asking the user for permissions to use the APP
+     * @param requestCode This Activities request code
+     * @param permissions The permissions list
+     * @param grantResults The permissions that have been granted..
+     */
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         mLocationPermissionsGranted = false;
@@ -397,7 +457,6 @@ public class MainActivity extends AppCompatActivity{
                     }
 
                     mLocationPermissionsGranted = true;
-                    // Do nothing rn
                 }
             }
         }

@@ -2,11 +2,8 @@ package ca.sykesdev.sheridango;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
-import android.preference.PreferenceManager;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -19,12 +16,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
+import model.InvestingAssistant;
 import model.PhotoHelper;
 import model.Property;
 
@@ -81,6 +76,7 @@ public class NewPropertyManager extends AppCompatActivity {
         txtPropertyInfo.setText(selectedProperty.getmType().toUpperCase()
                 + "  -  $" + selectedProperty.getmCost());
         txtCashCostInfo.setText(String.format(getString(R.string.txt_cost_text), 0.00));
+        txtCashBenefits.setText(String.format(getString(R.string.txt_cash_benefits_text), 0.00));
 
         // Setup the photo of the place
         if (selectedProperty.getmPhotoID().equalsIgnoreCase("NULL")) {
@@ -119,7 +115,7 @@ public class NewPropertyManager extends AppCompatActivity {
                         txtCashCostInfo.setText(String.format(getString(R.string.txt_cost_text), costAmount));
 
                         // Calculate cash benefits and display
-                        cashBenefitsCalculated = ((costAmount / 150) + (costAmount * 0.22)) / 12;
+                        cashBenefitsCalculated = InvestingAssistant.calculateCashBenefits(costAmount);
 
                         // Update benefits for user
                         txtCashBenefits.setText(String.
@@ -149,105 +145,19 @@ public class NewPropertyManager extends AppCompatActivity {
      * Handles investing in the selected property
      */
     private void investInProperty() {
-        SharedPreferences userPrefs = PreferenceManager.
-                getDefaultSharedPreferences(getApplicationContext());
-        final String displayName = userPrefs.getString(MainActivity.DISPLAY_NAME_KEY, "NULL");
-        userReference.child(displayName).
-                addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                double costAmount = Double.parseDouble(txtCashCostInfo.
-                        getText().subSequence(7,txtCashCostInfo.getText().length()).toString());
-                double investAmountPercent = (Double.parseDouble(txtEnterInvestAmount.
-                        getText().toString())) / 100;
-
-                try {
-                    double userPropertyValue = dataSnapshot.child(MainActivity.
-                            USER_PROPERTY_TOTAL_VALUE).getValue(Double.class);
-                    userCashValue = dataSnapshot.child(MainActivity.USER_CASH_KEY).getValue(Double.class);
-                    boolean ownsAlready =
-                            dataSnapshot.child(MainActivity.
-                                    USER_MY_PROPERTIES_KEY).hasChild(selectedProperty.getmName());
-
-                    // Check if user has enough money to make purchase
-                    if ((costAmount <= userCashValue)) {
-                        if (investAmountPercent <= (1 - selectedProperty.getmInvestAmount())) {
-                            userReference.child(displayName).child(MainActivity.USER_CASH_KEY)
-                                    .setValue((userCashValue - costAmount));
-
-                            // Update investAmount on property
-                            userReference.getParent().child(MainActivity.PROPERTY_DB_REF_KEY).
-                                    child(selectedProperty.getmID()).
-                                    child(ShowPropertiesActivity.PROPERTY_INVEST_TOTAL_KEY).
-                                    setValue(selectedProperty.getmInvestAmount() +
-                                            investAmountPercent);
-
-                            // Update user property value holding
-                            userReference.child(displayName).child(MainActivity.USER_PROPERTY_TOTAL_VALUE)
-                                    .setValue(userPropertyValue + (selectedProperty.getmCost()
-                                            * investAmountPercent));
-
-                            // Check if the user already owns shares in the selected property
-                            if (!ownsAlready) {
-                                // Update user properties to include key of new property invested in
-                                userReference.getParent().child(MainActivity.USER_LIST_KEY_PARENT).
-                                        child(displayName).child(MainActivity.USER_MY_PROPERTIES_KEY)
-                                        .child(selectedProperty.getmName()).setValue(selectedProperty.getmID());
-
-                                // Add The amount owned to the property item.
-                                userReference.getParent().child(MainActivity.USER_LIST_KEY_PARENT).
-                                        child(displayName).child(MainActivity.USER_MY_PROPERTIES_KEY)
-                                        .child(selectedProperty.getmName()).
-                                        child(MainActivity.USER_PROP_OWNED_AMOUNT).
-                                        setValue(investAmountPercent);
-
-                            } else {
-                                // If the user does own shares, get the amount owned and update
-                                double currentOwnedAmount = (double) dataSnapshot.
-                                        child(MainActivity.USER_MY_PROPERTIES_KEY).
-                                        child(selectedProperty.getmName()).
-                                        child(MainActivity.USER_PROP_OWNED_AMOUNT).getValue();
-
-                                userReference.getParent().child(MainActivity.USER_LIST_KEY_PARENT).
-                                        child(displayName).child(MainActivity.USER_MY_PROPERTIES_KEY)
-                                        .child(selectedProperty.getmName()).
-                                        child(MainActivity.USER_PROP_OWNED_AMOUNT).
-                                        setValue(currentOwnedAmount + investAmountPercent);
-                            }
-
-                            // Setting cashBenefitsCalculated to database so we can get it later
-                            // from the database...
-                            userReference.child(displayName)
-                                    .child(MainActivity.USER_MY_PROPERTIES_KEY).
-                                    child(selectedProperty.getmName())
-                                    .child(MainActivity.USER_PROP_CASH_BENEFITS_AMOUNT).
-                                    setValue(cashBenefitsCalculated);
-
-                        } else {
-                            Toast.makeText(getApplicationContext(),
-                                    "Sorry, it seems you want to invest too much in this property!",
-                                    Toast.LENGTH_LONG).show();
-                            Log.e(TAG, "investInProperty: Property cannot hold that much more investment.");
-                        }
-                    } else {
-                        Toast.makeText(getApplicationContext(),
-                                "It seems you do not have the funds required to make this purchase",
-                                Toast.LENGTH_LONG).show();
-                        Log.e(TAG, "investInProperty: User did not have enough" +
-                                " money to invest in property!");
-                    }
-                } catch (NullPointerException e) {
-                    Log.e(TAG, "onDataChange: Problem getting cash for user...");
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                // Display error
-                Log.e(TAG, "onCancelled: Error: Security access or " +
-                        "Remote server error..cannot access database.");
-            }
-        });
+        InvestingAssistant investingAssistant = new InvestingAssistant(selectedProperty,
+                cashBenefitsCalculated,
+                Double.parseDouble(txtCashCostInfo.getText().toString().substring(7,
+                        txtCashCostInfo.getText().length())),
+                Double.parseDouble(txtEnterInvestAmount.getText().toString()) / 100,
+                getApplicationContext());
+        investingAssistant.investInProperty();
+        Toast.makeText(getApplicationContext(),
+                "Investment successful!", Toast.LENGTH_LONG).show();
+        Log.i(TAG, "investInProperty: User successfully invested in the selected property!");
+        txtEnterInvestAmount.setText(null);
+        txtCashBenefits.setText(String.format(getString(R.string.txt_cash_benefits_text), 0.00));
+        txtCashCostInfo.setText(String.format(getString(R.string.txt_cost_text), 0.00));
     }
 
     /**

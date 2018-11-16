@@ -17,7 +17,7 @@
     <string name="lbl_invest_more_text">Invest more!</string>
     <string name="place_title_default">Sheridan College</string>
     <string name="lbl_invest_percent_text">Invest Percentage</string>
-    <string name="txtfield_enter_invest_value_text">enter invest amt</string>
+    <string name="txtfield_enter_invest_value_text">enter invest</string>
     <string name="btn_buy_text">BUY</string>
     <string name="lbl_sell_percentage_text">Sell Percentage</string>
     <string name="txtField_sell_amount_hint">enter sell amt</string>
@@ -43,4 +43,5 @@
     <string name="txt_myprop_name_text">%s</string>
     <string name="txt_myprop_ownedpercent_text">%d</string>
     <string name="txt_myprop_income_text">%d</string>
+    <string name="txt_income_owned_label_myprop_manager">Owned: %.2f%% - Income(per hour): $%.2f</string>
 </resources>
