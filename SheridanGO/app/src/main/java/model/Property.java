@@ -10,6 +10,7 @@ import android.os.Parcelable;
 public class Property implements Parcelable {
     private String mID, mName, mPhotoID, mType;
     private double mCost, mInvestAmount, mLat, mLong;
+    private double mPercentageOwned, mIncomeBenefits;
 
     /**
      * Creates a property object used in the rest of the app...
@@ -31,6 +32,12 @@ public class Property implements Parcelable {
         this.mInvestAmount = mInvestAmount;
         this.mLat = mLat;
         this.mLong = mLong;
+    }
+
+    public Property(String name, double incomeBenefits, double percentageOwned) {
+        this.mName = name;
+        this.mIncomeBenefits = incomeBenefits;
+        this.mPercentageOwned = percentageOwned;
     }
 
     protected Property(Parcel in) {
@@ -94,6 +101,14 @@ public class Property implements Parcelable {
 
     public double getmLong() {
         return mLong;
+    }
+
+    public double getmPercentageOwned() {
+        return mPercentageOwned;
+    }
+
+    public double getmIncomeBenefits() {
+        return mIncomeBenefits;
     }
 
     @Override

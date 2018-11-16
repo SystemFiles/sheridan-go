@@ -39,4 +39,8 @@
     <string name="txt_property_number_item_value">%d</string>
     <string name="btn_show_details_text">Show Details</string>
     <string name="txt_cash_benefits_text">Income With Selected Investment (Per Hour): $%.2f</string>
+
+    <string name="txt_myprop_name_text">%s</string>
+    <string name="txt_myprop_ownedpercent_text">%d</string>
+    <string name="txt_myprop_income_text">%d</string>
 </resources>

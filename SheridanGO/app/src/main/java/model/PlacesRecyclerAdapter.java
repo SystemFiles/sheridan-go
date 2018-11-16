@@ -14,7 +14,6 @@ import android.widget.TextView;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
-import ca.sykesdev.sheridango.MainActivity;
 import ca.sykesdev.sheridango.R;
 
 /**

@@ -265,15 +265,6 @@ public class ShowPropertiesActivity extends AppCompatActivity {
     }
 
     /**
-     * Initializes nearby properties in the database
-     */
-    private void initNearbyProperties() {
-        for (int i = 0; i < propertiesList.size(); i ++) {
-            initPlaceAt(i);
-        }
-    }
-
-    /**
      * Task used to request place information for nearby places..
      */
     private class RequestPlacesTask extends AsyncTask<Double, Integer, ArrayList<Property>> {
