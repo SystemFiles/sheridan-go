@@ -145,19 +145,27 @@ public class NewPropertyManager extends AppCompatActivity {
      * Handles investing in the selected property
      */
     private void investInProperty() {
-        InvestingAssistant investingAssistant = new InvestingAssistant(selectedProperty,
-                cashBenefitsCalculated,
-                Double.parseDouble(txtCashCostInfo.getText().toString().substring(7,
-                        txtCashCostInfo.getText().length())),
-                Double.parseDouble(txtEnterInvestAmount.getText().toString()) / 100,
-                getApplicationContext());
-        investingAssistant.investInProperty();
-        Toast.makeText(getApplicationContext(),
-                "Investment successful!", Toast.LENGTH_LONG).show();
-        Log.i(TAG, "investInProperty: User successfully invested in the selected property!");
-        txtEnterInvestAmount.setText(null);
-        txtCashBenefits.setText(String.format(getString(R.string.txt_cash_benefits_text), 0.00));
-        txtCashCostInfo.setText(String.format(getString(R.string.txt_cost_text), 0.00));
+        if (Integer.parseInt(txtEnterInvestAmount.getText().toString()) > 100
+                || Integer.parseInt(txtEnterInvestAmount.getText().toString()) < 0
+                || txtEnterInvestAmount.getText().length() == 0) {
+            Log.i(TAG, "investInProperty: Invalid input");
+            txtEnterInvestAmount.setError("Error: Invalid input.");
+        } else {
+            InvestingAssistant investingAssistant = new InvestingAssistant(selectedProperty,
+                    cashBenefitsCalculated,
+                    Double.parseDouble(txtCashCostInfo.getText().toString().substring(7,
+                            txtCashCostInfo.getText().length())),
+                    Double.parseDouble(txtEnterInvestAmount.getText().toString()) / 100,
+                    getApplicationContext());
+            investingAssistant.investInProperty();
+            txtEnterInvestAmount.setText(null);
+            txtCashBenefits.setText(String.format(getString(R.string.txt_cash_benefits_text), 0.00));
+            txtCashCostInfo.setText(String.format(getString(R.string.txt_cost_text), 0.00));
+
+            // Close the activity (Prevents error where user can keep investing over max ownership if they have enough money)
+            setResult(RESULT_OK);
+            finish();
+        }
     }
 
     /**

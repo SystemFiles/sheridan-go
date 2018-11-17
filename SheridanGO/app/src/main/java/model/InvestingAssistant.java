@@ -126,22 +126,28 @@ public class InvestingAssistant {
                                                 setValue(investAmountPercent);
 
                                     } else {
-                                        // If the user does own shares, get the amount owned and update
-                                        double currentOwnedAmount = (double) dataSnapshot.
-                                                child(MainActivity.USER_MY_PROPERTIES_KEY).
-                                                child(selectedProperty.getmName()).
-                                                child(MainActivity.USER_PROP_OWNED_AMOUNT).getValue();
+                                        try {
+                                            // If the user does own shares, get the amount owned and update
+                                            double currentOwnedAmount = dataSnapshot.
+                                                    child(MainActivity.USER_MY_PROPERTIES_KEY).
+                                                    child(selectedProperty.getmName()).
+                                                    child(MainActivity.USER_PROP_OWNED_AMOUNT).
+                                                    getValue(Double.class);
 
-                                        userReference.getParent().child(MainActivity.USER_LIST_KEY_PARENT).
-                                                child(displayName).child(MainActivity.USER_MY_PROPERTIES_KEY)
-                                                .child(selectedProperty.getmName()).
-                                                child(MainActivity.USER_PROP_OWNED_AMOUNT).
-                                                setValue(currentOwnedAmount + investAmountPercent);
+                                            userReference.getParent().child(MainActivity.USER_LIST_KEY_PARENT).
+                                                    child(displayName).child(MainActivity.USER_MY_PROPERTIES_KEY)
+                                                    .child(selectedProperty.getmName()).
+                                                    child(MainActivity.USER_PROP_OWNED_AMOUNT).
+                                                    setValue(currentOwnedAmount + investAmountPercent);
 
-                                        oldBenefits = (double) dataSnapshot.
-                                                child(MainActivity.USER_MY_PROPERTIES_KEY).
-                                                child(selectedProperty.getmName()).
-                                                child(MainActivity.USER_PROP_CASH_BENEFITS_AMOUNT).getValue();
+                                            oldBenefits = dataSnapshot.
+                                                    child(MainActivity.USER_MY_PROPERTIES_KEY).
+                                                    child(selectedProperty.getmName()).
+                                                    child(MainActivity.USER_PROP_CASH_BENEFITS_AMOUNT).getValue(Double.class);
+                                        } catch (NullPointerException e) {
+                                            Log.i(TAG, "onDataChange: Problem getting values " +
+                                                    "from DB in InvestingAssistant");
+                                        }
                                     }
 
                                     // Setting cashBenefitsCalculated to database so we can get it later
@@ -152,6 +158,9 @@ public class InvestingAssistant {
                                             .child(MainActivity.USER_PROP_CASH_BENEFITS_AMOUNT).
                                             setValue(oldBenefits + cashBenefitsCalculated);
 
+                                    Toast.makeText(context.getApplicationContext(),
+                                            "Investment successful!", Toast.LENGTH_LONG).show();
+                                    Log.i(TAG, "investInProperty: User successfully invested in the selected property!");
                                 } else {
                                     Toast.makeText(context.getApplicationContext(),
                                             "Sorry, it seems you want to invest too much in this property!",

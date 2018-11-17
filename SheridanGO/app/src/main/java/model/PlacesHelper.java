@@ -143,7 +143,6 @@ public class PlacesHelper {
                     // Get all other information
                     type = place.getJSONArray(PLACE_TYPE).getString(0);
                     try {
-                        // TODO: Keep an eye out for non-existing places exceptions.
                         photoID = place.getJSONArray(PLACE_PHOTOS).getJSONObject(0)
                                 .getString(PLACE_PHOTO_REFERENCE);
                     } catch (JSONException e) {
