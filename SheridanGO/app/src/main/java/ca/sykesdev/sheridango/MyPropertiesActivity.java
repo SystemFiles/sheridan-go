@@ -65,10 +65,10 @@ public class MyPropertiesActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     myPropertiesList.add(new Property(ds.getKey(),
-                            (double) ds.child(MainActivity.USER_PROP_CASH_BENEFITS_AMOUNT).
-                                    getValue(),
-                            (double) ds.child(MainActivity.USER_PROP_OWNED_AMOUNT).
-                                    getValue()));
+                            ds.child(MainActivity.USER_PROP_CASH_BENEFITS_AMOUNT).
+                                    getValue(Double.class),
+                            ds.child(MainActivity.USER_PROP_OWNED_AMOUNT).
+                                    getValue(Double.class)));
                 }
 
                 // List the places in the recycler view

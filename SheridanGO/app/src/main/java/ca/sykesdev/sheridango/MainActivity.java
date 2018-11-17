@@ -196,7 +196,7 @@ public class MainActivity extends AppCompatActivity{
                 addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        double amountTotalPaid = 0;
+                        double amountTotalPaid = 0.0;
 
                         // Get total amount that needs to be paid out to the user this hour...
                         for (DataSnapshot ds : dataSnapshot.
@@ -207,12 +207,12 @@ public class MainActivity extends AppCompatActivity{
 
                         // Set users new cash amount to current plus the total paid for this hour
                         mCurUserDataRef.child(USER_CASH_KEY).
-                                setValue((double) dataSnapshot.child(USER_CASH_KEY).
-                                        getValue() + amountTotalPaid);
+                                setValue(dataSnapshot.child(USER_CASH_KEY).
+                                        getValue(Double.class) + amountTotalPaid);
 
                         // Also remember to update the users revenue
-                        mCurUserDataRef.child(USER_REVENUE_GAIN_KEY).setValue((double)
-                                dataSnapshot.child(USER_REVENUE_GAIN_KEY).getValue()
+                        mCurUserDataRef.child(USER_REVENUE_GAIN_KEY).setValue(
+                                dataSnapshot.child(USER_REVENUE_GAIN_KEY).getValue(Double.class)
                                         + amountTotalPaid
                         );
                     }
@@ -365,7 +365,7 @@ public class MainActivity extends AppCompatActivity{
 
         // Setup dataBase stuff for this user...
         getDatabase();
-        mCurUserDataRef.child(USER_CASH_KEY).setValue(50000);
+        mCurUserDataRef.child(USER_CASH_KEY).setValue(50000.0);
         mCurUserDataRef.child(USER_PROPERTY_TOTAL_VALUE).setValue(0);
         mCurUserDataRef.child(USER_REVENUE_GAIN_KEY).setValue(0);
         mCurUserDataRef.child(USER_MY_PROPERTIES_KEY); // Just create the store location for now.

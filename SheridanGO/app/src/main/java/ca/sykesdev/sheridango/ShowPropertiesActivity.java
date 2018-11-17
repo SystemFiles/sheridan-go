@@ -327,9 +327,6 @@ public class ShowPropertiesActivity extends AppCompatActivity {
         if (requestCode == SHOW_PROPERTIES_ACTIVITY) {
             if (resultCode == RESULT_OK) {
                 Log.i(TAG, "onActivityResult: Returned from new property manager...");
-                // Don't need to do anything here..All is working properly
-            } else {
-                Log.e(TAG, "onActivityResult: Problem occurred..");
             }
         }
     }
