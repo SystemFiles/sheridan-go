@@ -145,9 +145,10 @@ public class NewPropertyManager extends AppCompatActivity {
      * Handles investing in the selected property
      */
     private void investInProperty() {
-        if (Integer.parseInt(txtEnterInvestAmount.getText().toString()) > 100
-                || Integer.parseInt(txtEnterInvestAmount.getText().toString()) < 0
-                || txtEnterInvestAmount.getText().length() == 0) {
+        String investAmount = txtEnterInvestAmount.getText().toString();
+        if (Integer.parseInt(investAmount) > 100
+                || Integer.parseInt(investAmount) < 0
+                || investAmount.length() == 0) {
             Log.i(TAG, "investInProperty: Invalid input");
             txtEnterInvestAmount.setError("Error: Invalid input.");
         } else {
@@ -155,7 +156,7 @@ public class NewPropertyManager extends AppCompatActivity {
                     cashBenefitsCalculated,
                     Double.parseDouble(txtCashCostInfo.getText().toString().substring(7,
                             txtCashCostInfo.getText().length())),
-                    Double.parseDouble(txtEnterInvestAmount.getText().toString()) / 100,
+                    Double.parseDouble(investAmount) / 100,
                     getApplicationContext());
             investingAssistant.investInProperty();
             txtEnterInvestAmount.setText(null);

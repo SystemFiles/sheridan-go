@@ -1,10 +1,9 @@
 package ca.sykesdev.sheridango;
 
 import android.Manifest;
-import android.app.Activity;
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,9 +11,6 @@ import android.content.pm.PackageManager;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.multidex.MultiDex;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -33,10 +29,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity{
 
@@ -60,7 +56,8 @@ public class MainActivity extends AppCompatActivity{
     private boolean mLocationPermissionsGranted = false;
     private final int LOCATION_PERMISSION_REQUEST_CODE = 9002;
     private SharedPreferences curUserPrefs;
-    private TimerTask incomeTmrTask;
+    private TimerTask mIncomeTmrTask;
+    private double mBackgroundPay;
 
     // firebase DB variables
     private static final FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
@@ -180,6 +177,7 @@ public class MainActivity extends AppCompatActivity{
         long timeSinceExit = (System.currentTimeMillis() -
                 curUserPrefs.getLong(APPLICATION_EXIT_TIME_KEY, 0));
         getIncomeForTime(timeSinceExit);
+
         Log.i(TAG, "payForOfflineTime: Paid user for time since they have been offline.");
     }
 
@@ -187,6 +185,7 @@ public class MainActivity extends AppCompatActivity{
      * Gets income rel to the time of last payout...
      * @param timeMilisFromLastExecute Time in miliseconds since last execution
      */
+    @SuppressLint("DefaultLocale")
     private void getIncomeForTime(final long timeMilisFromLastExecute) {
         Log.i(TAG, "GetIncomeForTime: Getting cash income from all owned properties...");
         final double TIME_HOURS = (timeMilisFromLastExecute / 1000.0 / 60.0 / 60.0);
@@ -196,25 +195,48 @@ public class MainActivity extends AppCompatActivity{
                 addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        double amountTotalPaid = 0.0;
-
+                        boolean payingForBackground = (mBackgroundPay == 0);
+                        mBackgroundPay = 0;
                         // Get total amount that needs to be paid out to the user this hour...
                         for (DataSnapshot ds : dataSnapshot.
                                 child(USER_MY_PROPERTIES_KEY).getChildren()) {
-                            amountTotalPaid += ((double) ds.
+                            mBackgroundPay += ((double) ds.
                                     child(USER_PROP_CASH_BENEFITS_AMOUNT).getValue()) * TIME_HOURS;
                         }
 
                         // Set users new cash amount to current plus the total paid for this hour
                         mCurUserDataRef.child(USER_CASH_KEY).
                                 setValue(dataSnapshot.child(USER_CASH_KEY).
-                                        getValue(Double.class) + amountTotalPaid);
+                                        getValue(Double.class) + mBackgroundPay);
 
                         // Also remember to update the users revenue
                         mCurUserDataRef.child(USER_REVENUE_GAIN_KEY).setValue(
                                 dataSnapshot.child(USER_REVENUE_GAIN_KEY).getValue(Double.class)
-                                        + amountTotalPaid
+                                        + mBackgroundPay
                         );
+
+                        if (payingForBackground) {
+                            // Display message to user
+                            String dialogText = String.format(getString(R.string.
+                                            dialoge_background_pay_notification_text),
+                                    mBackgroundPay,
+                                    TimeUnit.MILLISECONDS.toHours(timeMilisFromLastExecute),
+                                    TimeUnit.MILLISECONDS.toMinutes(timeMilisFromLastExecute) -
+                                            TimeUnit.MINUTES.toMinutes(TimeUnit.MILLISECONDS.toHours(timeMilisFromLastExecute)),
+                                    TimeUnit.MILLISECONDS.toSeconds(timeMilisFromLastExecute) -
+                                            TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(timeMilisFromLastExecute)));
+
+                            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                            builder.setMessage(dialogText)
+                                    .setCancelable(false)
+                                    .setPositiveButton("AWESOME!", new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                            Log.i(TAG, "onDialogOkayClick: Returning to Activity");
+                                        }
+                                    });
+                            AlertDialog alert = builder.create();
+                            alert.show();
+                        }
                     }
 
                     @Override
@@ -380,7 +402,7 @@ public class MainActivity extends AppCompatActivity{
      */
     private void setupPayServices() {
         // Create incomeTimer for handling income from properties
-        incomeTmrTask = new TimerTask() {
+        mIncomeTmrTask = new TimerTask() {
             @Override
             public void run() {
                 getIncomeForTime(10000L);
@@ -389,7 +411,7 @@ public class MainActivity extends AppCompatActivity{
 
         // Start the onGoing timer to get cash!
         Timer incomeTmr = new Timer();
-        incomeTmr.schedule(incomeTmrTask, 10000L, 12000L);
+        incomeTmr.schedule(mIncomeTmrTask, 10000L, 12000L);
     }
 
     /**
