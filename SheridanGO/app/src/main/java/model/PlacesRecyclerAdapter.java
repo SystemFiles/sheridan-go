@@ -32,6 +32,9 @@ public class PlacesRecyclerAdapter extends RecyclerView.Adapter<PlacesRecyclerAd
         mProperties = places;
     }
 
+    /**
+     * View holder for places object.
+     */
     public static class PlacesViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         // LOGING CONSTANT
