@@ -311,7 +311,8 @@ public class MainActivity extends AppCompatActivity{
 
         if (requestCode == MAIN_ACTIVITY) {
             if (resultCode == RESULT_OK) {
-                Log.i(TAG, "onActivityResult: Everything is working properly");
+                Log.i(TAG, "onActivityResult: Everything is working properly. Nothing to " +
+                        "report");
             } else if (resultCode == RESULT_FIRST_USER) {
                 setupNewUser(data.getStringExtra(DISPLAY_NAME_KEY));
             } else {

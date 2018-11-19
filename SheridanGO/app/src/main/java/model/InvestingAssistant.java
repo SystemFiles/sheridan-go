@@ -67,7 +67,6 @@ public class InvestingAssistant {
      * Handle selling of shares in a property
      */
     public void sellSharesFromProperty() {
-        // TODO: Implement selling of shares...
         rootReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -81,6 +80,7 @@ public class InvestingAssistant {
                             child(selectedProperty.getmName()).
                             child(MainActivity.USER_PROP_OWNED_AMOUNT).getValue(Double.class);
 
+                    // TODO: Fix error here with null ID field for selectedProperty.
                     globalPropertyOwned = dataSnapshot.child(MainActivity.PROPERTY_DB_REF_KEY).
                             child(selectedProperty.getmID()).
                             child(ShowPropertiesActivity.PROPERTY_INVEST_TOTAL_KEY)

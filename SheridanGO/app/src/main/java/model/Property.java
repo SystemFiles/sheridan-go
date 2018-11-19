@@ -34,10 +34,21 @@ public class Property implements Parcelable {
         this.mLong = mLong;
     }
 
-    public Property(String name, double incomeBenefits, double percentageOwned) {
-        this.mName = name;
-        this.mIncomeBenefits = incomeBenefits;
-        this.mPercentageOwned = percentageOwned;
+    /**
+     * Constructor used for personal property listing and handling. We are using only information
+     * that is needed for selling and investing further into existing properties.
+     * @param mID The property ID
+     * @param mName The name of the property
+     * @param mCost The cost of the property in total (for 100%)
+     * @param mPercentageOwned The percentage owned by this user
+     * @param mIncomeBenefits The income benefits received by this user.
+     */
+    public Property(String mID, String mName, double mCost, double mPercentageOwned, double mIncomeBenefits) {
+        this.mID = mID;
+        this.mName = mName;
+        this.mCost = mCost;
+        this.mPercentageOwned = mPercentageOwned;
+        this.mIncomeBenefits = mIncomeBenefits;
     }
 
     protected Property(Parcel in) {

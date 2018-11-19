@@ -29,12 +29,12 @@ public class MyPropertiesActivity extends AppCompatActivity {
     private RecyclerView rMyPropertyView;
 
     // Firebase DB Reference for user properties
-    DatabaseReference mOwnedPropertiesReference;
+    DatabaseReference mRootDataReference;
 
     // Activity Constants and variables
     private ArrayList<Property> myPropertiesList = new ArrayList<>();
     public static final int MY_PROPERTIES_ACTIVITY = 2; // IMPORTANT (DO NOT DELETE)
-    public static final String MY_PROPERTY_LIST_INTENT_KEY = "myPropListIntent";
+    public static final String SELECTED_PROPERTY_INTENT_KEY = "selectedPropertyKey";
     private final String TAG = "MY_PROPERTIES_ACT";
     private SharedPreferences userPrefs;
 
@@ -48,11 +48,8 @@ public class MyPropertiesActivity extends AppCompatActivity {
                 getDefaultSharedPreferences(this);
 
         // Get DB reference needed to list owned properties
-        mOwnedPropertiesReference = FirebaseDatabase.
-                getInstance().getReference(MainActivity.
-                USER_LIST_KEY_PARENT).child(userPrefs.
-                getString(MainActivity.DISPLAY_NAME_KEY, "NULL")).
-                child(MainActivity.USER_MY_PROPERTIES_KEY);
+        mRootDataReference = FirebaseDatabase.
+                getInstance().getReference();
 
         // Load owned properties into arraylist and init controls
         rMyPropertyView = findViewById(R.id.rMyPropertyView);
@@ -60,19 +57,49 @@ public class MyPropertiesActivity extends AppCompatActivity {
         /**
          * Load in properties owned by the user..
          */
-        mOwnedPropertiesReference.addListenerForSingleValueEvent(new ValueEventListener() {
+        mRootDataReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                    myPropertiesList.add(new Property(ds.getKey(),
-                            ds.child(MainActivity.USER_PROP_CASH_BENEFITS_AMOUNT).
-                                    getValue(Double.class),
-                            ds.child(MainActivity.USER_PROP_OWNED_AMOUNT).
-                                    getValue(Double.class)));
+                DataSnapshot myPropReference = dataSnapshot.
+                        child(MainActivity.USER_LIST_KEY_PARENT).
+                        child(userPrefs.getString(MainActivity.DISPLAY_NAME_KEY, "NULL")).
+                        child(MainActivity.USER_MY_PROPERTIES_KEY);
+                DataSnapshot globalPropReference = dataSnapshot.
+                        child(MainActivity.PROPERTY_DB_REF_KEY);
+
+                // For each property we need (ID, name, owned, cost, incomeBenefits)
+                for (DataSnapshot myProp : myPropReference.getChildren()) {
+                    // Get special values from global
+                    String myCurrentPropName = myProp.getKey();
+                    String id = null;
+                    double cost = 0.0;
+
+                    // Search for needed values (TODO: Optimize this...not nearly as efficient as we want)
+                    for (DataSnapshot globalProp : globalPropReference.getChildren()) {
+                        if (globalProp.child(ShowPropertiesActivity.PROPERTY_NAME_KEY).
+                                getValue().toString().
+                                equalsIgnoreCase(myCurrentPropName)) {
+                            id = globalProp.getKey();
+                            cost = globalProp.child(ShowPropertiesActivity.
+                                    PROPERTY_VALUE_KEY).getValue(Double.class);
+                        }
+                    }
+
+                    /* Make sure the property actually exists in the global context of
+                     this applications database
+                    */
+                    if (id != null) {
+                        myPropertiesList.add(new Property(id,
+                                myCurrentPropName, cost,
+                                myProp.child(MainActivity.USER_PROP_OWNED_AMOUNT).
+                                        getValue(Double.class),
+                                myProp.child(MainActivity.USER_PROP_CASH_BENEFITS_AMOUNT).
+                                        getValue(Double.class)));
+                    }
                 }
 
                 // List the places in the recycler view
-                listPlaces();
+                listMyProperties();
             }
 
             @Override
@@ -85,12 +112,25 @@ public class MyPropertiesActivity extends AppCompatActivity {
     }
 
     /**
+     * When we come back from selling a property,
+     * exit the list as well
+     */
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        // Close the list
+        setResult(RESULT_OK);
+        finish();
+    }
+
+    /**
      * Method called by event handler to load the list of data to display in RecyclerView...
      * AKA: MyPropertyRecyclerView
      */
-    private void listPlaces() {
+    private void listMyProperties() {
 
-        Log.i(TAG, "listPlaces: Listing properties into recyclerView...");
+        Log.i(TAG, "listMyProperties: Listing properties into recyclerView...");
 
         // For performance optimization we set each item to a fixed size..
         rMyPropertyView.setHasFixedSize(true);
@@ -114,7 +154,7 @@ public class MyPropertiesActivity extends AppCompatActivity {
                         MyPropertyManager.class);
 
                 // pass property information to intent
-                newPropertyIntent.putExtra(MY_PROPERTY_LIST_INTENT_KEY,
+                newPropertyIntent.putExtra(SELECTED_PROPERTY_INTENT_KEY,
                         myPropertiesList.get(position));
                 startActivityForResult(newPropertyIntent, MY_PROPERTIES_ACTIVITY);
             }
