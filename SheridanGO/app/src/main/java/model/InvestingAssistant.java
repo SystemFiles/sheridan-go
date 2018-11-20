@@ -29,12 +29,13 @@ public class InvestingAssistant {
     private double costAmount;
     private double investSellAmountPercent;
     private Context context;
+    private OnWantToExitListener exitListener;
 
-    // Variables used in selling
+    // Variables used in selling (SPLT)
     private double userPropOwnedAmount, globalPropertyOwned,
             userPropCashBenefits, userTotalPropertyValue;
 
-    // Constants
+    // Constant for logging
     private final String TAG = "INVESTING_ASSISTANT";
 
     /**
@@ -73,6 +74,11 @@ public class InvestingAssistant {
                 // Check that the user actually owns the selectedProperty
                 if (dataSnapshot.child(MainActivity.USER_LIST_KEY_PARENT).child(displayName).child(MainActivity.
                         USER_MY_PROPERTIES_KEY).hasChild(selectedProperty.getmName())) {
+
+                    // Convert investSellAmountPercent to a percentage(decimal)
+                    investSellAmountPercent /= 100;
+
+                    // ---------GET RE_USED VARIABLE AMOUNTS FROM DATABASE AND STORE ------------ //
                     userPropOwnedAmount = dataSnapshot.child(MainActivity.
                             USER_LIST_KEY_PARENT).
                             child(displayName).
@@ -80,7 +86,9 @@ public class InvestingAssistant {
                             child(selectedProperty.getmName()).
                             child(MainActivity.USER_PROP_OWNED_AMOUNT).getValue(Double.class);
 
-                    // TODO: Fix error here with null ID field for selectedProperty.
+                    // Round number to avoid errors
+                    userPropOwnedAmount = roundNumber(userPropOwnedAmount);
+
                     globalPropertyOwned = dataSnapshot.child(MainActivity.PROPERTY_DB_REF_KEY).
                             child(selectedProperty.getmID()).
                             child(ShowPropertiesActivity.PROPERTY_INVEST_TOTAL_KEY)
@@ -102,6 +110,7 @@ public class InvestingAssistant {
                                     child(MainActivity.USER_PROPERTY_TOTAL_VALUE).
                                     getValue(Double.class);
 
+                    // ------ END OF STORED VARIABLES FROM DB -------- //
 
                     // Check that the user wants to sell less than total they own of the property
                     if (investSellAmountPercent < userPropOwnedAmount && investSellAmountPercent > 0) {
@@ -117,37 +126,54 @@ public class InvestingAssistant {
                                 setValue(globalPropertyOwned - investSellAmountPercent);
 
                         // Update current properties incomeBenefits
-                        userReference.child(MainActivity.USER_MY_PROPERTIES_KEY).
+                        double newCashBenefits = userPropCashBenefits * (1.0 - investSellAmountPercent);
+                        userReference.child(displayName).child(MainActivity.USER_MY_PROPERTIES_KEY).
                                 child(selectedProperty.getmName()).child(MainActivity.
-                                USER_PROP_CASH_BENEFITS_AMOUNT).setValue(userPropCashBenefits
-                                * (1.0 -
-                                (investSellAmountPercent / 100)));
+                                USER_PROP_CASH_BENEFITS_AMOUNT).setValue(newCashBenefits);
 
                         // Update user cash
+                        double newUserCash = userCashValue + getRefundAmount();
                         userReference.child(displayName).child(MainActivity.USER_CASH_KEY)
-                                .setValue(userCashValue + getRefundAmount());
+                                .setValue(newUserCash);
 
                         // Update user property value total
                         userReference.child(displayName).
                                 child(MainActivity.USER_PROPERTY_TOTAL_VALUE).
                                 setValue(userTotalPropertyValue -
-                                        (costAmount * (investSellAmountPercent / 100.0)));
-                    } else {
+                                        (costAmount * (investSellAmountPercent)));
+                    } else if (investSellAmountPercent == userPropOwnedAmount) {
+                        Log.i(TAG, "onDataChange: " + investSellAmountPercent + " : " + userPropOwnedAmount);
                         // User wants to sell the whole property (not just the shares of it).
                         if (investSellAmountPercent < 0) {
                             Log.e(TAG, "onDataChange: Do nothing...User trying to sell " +
                                     "negative percentage of their property");
                             return;
                         }
+                        // Sell the whole property
                         sellWholeProperty();
+                    } else {
+                        Toast.makeText(context.getApplicationContext(),
+                                "Error: You are trying to sell more than you have...",
+                                Toast.LENGTH_LONG).show();
+                        Log.e(TAG, "onDataChange: User trying to sell invalid amount of their property" );
+                        return;
                     }
 
                     // Let user know that everything is finished successfully
                     Toast.makeText(context.getApplicationContext(),
                             "Property shares sold successfully for $" + getRefundAmount() + "!",
                             Toast.LENGTH_LONG).show();
+
+                    // Let the calling activity know that we want to exit (After sale)
+                    fireWantToExit();
                 } else {
+                    Toast.makeText(context.getApplicationContext(),
+                            "Property could not be sold because you do not own it..",
+                            Toast.LENGTH_LONG).show();
                     Log.e(TAG, "onDataChange: User trying to sell property they do not own..");
+
+                    // Let caller know there has been an error and we want to exit
+                    fireWantToExit();
                 }
             }
 
@@ -176,7 +202,7 @@ public class InvestingAssistant {
         userReference.child(displayName).
                 child(MainActivity.USER_PROPERTY_TOTAL_VALUE).
                 setValue(userTotalPropertyValue -
-                        (costAmount * (investSellAmountPercent / 100.0)));
+                        (costAmount * (investSellAmountPercent)));
 
         // Restore invested amount to the global property
         propDataReference.child(selectedProperty.getmID()).
@@ -315,7 +341,34 @@ public class InvestingAssistant {
      * @return The refund amount ($)
      */
     private double getRefundAmount() {
-        return (costAmount * (investSellAmountPercent / 100.0)) * (0.75);
+        return (costAmount * (investSellAmountPercent ) * (0.75));
+    }
+
+    /**
+     * Sets up the close activity listener for closing the Activity only when needed operations are
+     * completed.
+     * @param listener The OnWantToCloseListener
+     */
+    public void setWantToExitListener(OnWantToExitListener listener){
+        this.exitListener = listener;
+    }
+
+    /**
+     * Triggered when the application wants to exit the Activity
+     */
+    private void fireWantToExit(){
+        if(this.exitListener != null)
+            exitListener.onWantToExit();
+    }
+
+    /**
+     * Rounds the given number to 2 decimal precision
+     * @param n The number to round
+     * @return The newly rounded number
+     */
+    private Double roundNumber(Double n) {
+        String temp = String.format("%.2f", n);
+        return Double.parseDouble(temp);
     }
 
 }

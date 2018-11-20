@@ -19,6 +19,7 @@
     <string name="lbl_invest_percent_text">Invest Percentage</string>
     <string name="txtfield_enter_invest_value_text">enter invest</string>
     <string name="btn_buy_text">BUY</string>
+    <string name="lbl_sell_caption_text">Sell Shares (Property)</string>
     <string name="lbl_sell_percentage_text">Sell Percentage</string>
     <string name="txtField_sell_amount_hint">enter sell amt</string>
     <string name="btn_sell_text">SELL</string>

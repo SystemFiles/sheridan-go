@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
@@ -51,12 +52,26 @@ public class MyPropertiesActivity extends AppCompatActivity {
         mRootDataReference = FirebaseDatabase.
                 getInstance().getReference();
 
-        // Load owned properties into arraylist and init controls
+        // Init RecyclerViewControl (Here so we can refresh)
         rMyPropertyView = findViewById(R.id.rMyPropertyView);
 
-        /**
-         * Load in properties owned by the user..
-         */
+        // Load the updated list of owned properties.
+        loadProperties();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        // Clear items so we can see a new updated (refreshed) views.
+        rMyPropertyView.setRecycledViewPool(new RecyclerView.RecycledViewPool());
+        myPropertiesList.clear();
+    }
+
+    /**
+     * Load in properties owned by the user..
+     */
+    private void loadProperties() {
         mRootDataReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -74,7 +89,7 @@ public class MyPropertiesActivity extends AppCompatActivity {
                     String id = null;
                     double cost = 0.0;
 
-                    // Search for needed values (TODO: Optimize this...not nearly as efficient as we want)
+                    // Search for needed values (INSIDE the Global Props)
                     for (DataSnapshot globalProp : globalPropReference.getChildren()) {
                         if (globalProp.child(ShowPropertiesActivity.PROPERTY_NAME_KEY).
                                 getValue().toString().
@@ -91,9 +106,9 @@ public class MyPropertiesActivity extends AppCompatActivity {
                     if (id != null) {
                         myPropertiesList.add(new Property(id,
                                 myCurrentPropName, cost,
-                                myProp.child(MainActivity.USER_PROP_OWNED_AMOUNT).
-                                        getValue(Double.class),
-                                myProp.child(MainActivity.USER_PROP_CASH_BENEFITS_AMOUNT).
+                                (double) myProp.child(MainActivity.USER_PROP_OWNED_AMOUNT).
+                                        getValue(),
+                                (double) myProp.child(MainActivity.USER_PROP_CASH_BENEFITS_AMOUNT).
                                         getValue(Double.class)));
                     }
                 }
@@ -112,24 +127,10 @@ public class MyPropertiesActivity extends AppCompatActivity {
     }
 
     /**
-     * When we come back from selling a property,
-     * exit the list as well
-     */
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-        // Close the list
-        setResult(RESULT_OK);
-        finish();
-    }
-
-    /**
      * Method called by event handler to load the list of data to display in RecyclerView...
      * AKA: MyPropertyRecyclerView
      */
     private void listMyProperties() {
-
         Log.i(TAG, "listMyProperties: Listing properties into recyclerView...");
 
         // For performance optimization we set each item to a fixed size..
@@ -160,5 +161,23 @@ public class MyPropertiesActivity extends AppCompatActivity {
             }
         });
         rMyPropertyView.setAdapter(adapter);
+    }
+
+
+    /**
+     * Refresh properties if result is okay.
+     * @param requestCode The activity that opened the Activity being returned from
+     * @param resultCode The result. Howd it go?
+     * @param data NULL
+     */
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == MY_PROPERTIES_ACTIVITY) {
+            if (resultCode == RESULT_OK) {
+                // Refresh properties
+                loadProperties();
+            }
+        }
     }
 }

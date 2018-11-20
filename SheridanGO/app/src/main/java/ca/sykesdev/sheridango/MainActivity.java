@@ -163,7 +163,7 @@ public class MainActivity extends AppCompatActivity{
         editor.putLong(APPLICATION_EXIT_TIME_KEY, System.currentTimeMillis());
         editor.apply();
 
-        Log.i(TAG, "onDestroy: Saved time of app exit.");
+        Log.i(TAG, "onStop: Saved time of app exit.");
     }
 
     /**

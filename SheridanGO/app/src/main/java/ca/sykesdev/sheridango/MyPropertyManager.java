@@ -1,6 +1,9 @@
 package ca.sykesdev.sheridango;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,7 +13,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.database.FirebaseDatabase;
+
 import model.InvestingAssistant;
+import model.OnWantToExitListener;
 import model.Property;
 
 public class MyPropertyManager extends AppCompatActivity {
@@ -35,7 +41,7 @@ public class MyPropertyManager extends AppCompatActivity {
         // Initiate control variables
         imgPropertyImage = findViewById(R.id.imgPropertyPhoto);
         txtAboutProperty = findViewById(R.id.txtAboutProperty);
-        txtInvestCostAmount = findViewById(R.id.txtCashCostValue);
+        txtInvestCostAmount = findViewById(R.id.txtCashCost);
         txtSellGainAmount = findViewById(R.id.txtSellCashAmount);
         txtInvestMorePercent = findViewById(R.id.txtInvestMorePercent);
         txtSellPercent = findViewById(R.id.txtSellPercentage);
@@ -47,13 +53,17 @@ public class MyPropertyManager extends AppCompatActivity {
         selectedProperty = propIntent.getParcelableExtra(MyPropertiesActivity
                 .SELECTED_PROPERTY_INTENT_KEY);
 
+        // Initiate control values with selected property values
+        setPropertyValues();
+
+        // Setup Listeners
         /**
          * Invest more in the property
          */
         btnInvest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                // TODO: Use InvestingAssistant to help with investing more in a property
             }
         });
 
@@ -63,12 +73,10 @@ public class MyPropertyManager extends AppCompatActivity {
         btnSellShares.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /* TODO: Fix major errors that occur here.. (with global properties and with
-                 local being completely sold at any selected percentage and global being able
-                 to be sold multiple times to make global owned percent HUGE negative numbers that
-                 make no sense.
-                */
-                if (false) {
+                /* TODO: Keep an eye on this, still needs more testing*/
+                final int CLOSE = 1; // number to identify what happens
+
+                if (true) {
                     double sellPercent = Double.parseDouble(txtSellPercent.getText().toString());
 
                     // Make sure the user entered a valid sell percent
@@ -80,14 +88,27 @@ public class MyPropertyManager extends AppCompatActivity {
                                         Double.parseDouble(txtSellPercent.getText().toString()),
                                         getApplicationContext());
 
-                        // Sell the property
-                        investingAssistant.sellSharesFromProperty();
+                        // Setup exit handler before we start selling operation
+                        @SuppressLint("HandlerLeak") final Handler handler = new Handler(){
+                            public void handleMessage(Message msg){
+                                if(msg.what == CLOSE)
+                                    MyPropertyManager.this.setResult(RESULT_OK);
+                                    MyPropertyManager.this.finish();
+                            }
+                        };
 
-                        // Exit the activity
-                        setResult(RESULT_OK);
-                        finish();
+                        // Set the listener
+                        investingAssistant.setWantToExitListener(new OnWantToExitListener() {
+                            @Override
+                            public void onWantToExit() {
+                                handler.sendEmptyMessage(CLOSE);
+                            }
+                        });
+
+                        // {PERFORM}: Sell the property
+                        investingAssistant.sellSharesFromProperty();
                     } else {
-                        txtSellPercent.setError(String.format("Error: Enter a number between 1 and %d",
+                        txtSellPercent.setError(String.format("Error: Enter a number between 1 and %.2f",
                                 selectedProperty.getmPercentageOwned()));
                     }
                 } else {
@@ -96,5 +117,19 @@ public class MyPropertyManager extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    /**
+     * Sets the proper values for the selectedProperty
+     */
+    private void setPropertyValues() {
+        // Init all fields to correct values
+        txtAboutProperty.setText(String.format(getString(R.string.
+                        txt_income_owned_label_myprop_manager),
+                selectedProperty.getmPercentageOwned(), selectedProperty.getmIncomeBenefits()));
+        txtInvestCostAmount.setText(String.format(getString(R.string.txt_cost_text),
+                0.0));
+        txtSellGainAmount.setText(String.format(getString(R.string.txt_sell_amount_text),
+                0.0));
     }
 }

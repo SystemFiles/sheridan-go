@@ -29,6 +29,9 @@ public class MyPropertysRecyclerAdapter extends RecyclerView.Adapter<MyPropertys
         this.listener = listener;
     }
 
+    /**
+     * View holder for my property
+     */
     public static class PropertyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         // LOGING CONSTANT
