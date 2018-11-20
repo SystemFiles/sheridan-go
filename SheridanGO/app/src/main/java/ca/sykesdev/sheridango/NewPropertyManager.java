@@ -4,6 +4,8 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -20,6 +22,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import model.InvestingAssistant;
+import model.OnWantToExitListener;
 import model.PhotoHelper;
 import model.Property;
 
@@ -31,15 +34,10 @@ public class NewPropertyManager extends AppCompatActivity {
     private ImageView imgPropertyPhoto;
     private Button btnBuy;
 
-    // User DB Variables
-    private DatabaseReference userReference = FirebaseDatabase.getInstance().
-            getReference(MainActivity.USER_LIST_KEY_PARENT);
-
     // Activity Constants and Variables
     private final String TAG = "NEW_PROPERTY_MANAGER";
     private Property selectedProperty;
     private double cashBenefitsCalculated;
-    private double userCashValue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -145,7 +143,9 @@ public class NewPropertyManager extends AppCompatActivity {
      * Handles investing in the selected property
      */
     private void investInProperty() {
+        final int CLOSE = 1;
         String investAmount = txtEnterInvestAmount.getText().toString();
+
         if (Integer.parseInt(investAmount) > 100
                 || Integer.parseInt(investAmount) < 0
                 || investAmount.length() == 0) {
@@ -158,14 +158,26 @@ public class NewPropertyManager extends AppCompatActivity {
                             txtCashCostInfo.getText().length())),
                     Double.parseDouble(investAmount) / 100,
                     getApplicationContext());
-            investingAssistant.investInProperty();
-            txtEnterInvestAmount.setText(null);
-            txtCashBenefits.setText(String.format(getString(R.string.txt_cash_benefits_text), 0.00));
-            txtCashCostInfo.setText(String.format(getString(R.string.txt_cost_text), 0.00));
 
-            // Close the activity (Prevents error where user can keep investing over max ownership if they have enough money)
-            setResult(RESULT_OK);
-            finish();
+            // Setup exit handler before we start selling operation
+            @SuppressLint("HandlerLeak") final Handler handler = new Handler() {
+                public void handleMessage(Message msg) {
+                    if (msg.what == CLOSE)
+                        NewPropertyManager.this.setResult(RESULT_OK);
+                    NewPropertyManager.this.finish();
+                }
+            };
+
+            // Set the listener
+            investingAssistant.setWantToExitListener(new OnWantToExitListener() {
+                @Override
+                public void onWantToExit() {
+                    handler.sendEmptyMessage(CLOSE);
+                }
+            });
+
+            // Start investing
+            investingAssistant.investInProperty();
         }
     }
 

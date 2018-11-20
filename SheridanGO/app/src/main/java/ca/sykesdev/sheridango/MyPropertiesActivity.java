@@ -54,24 +54,25 @@ public class MyPropertiesActivity extends AppCompatActivity {
 
         // Init RecyclerViewControl (Here so we can refresh)
         rMyPropertyView = findViewById(R.id.rMyPropertyView);
-
-        // Load the updated list of owned properties.
-        loadProperties();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
 
-        // Clear items so we can see a new updated (refreshed) views.
-        rMyPropertyView.setRecycledViewPool(new RecyclerView.RecycledViewPool());
-        myPropertiesList.clear();
+        // Re-Load the updated list of owned properties.
+        loadProperties();
     }
 
     /**
      * Load in properties owned by the user..
      */
     private void loadProperties() {
+
+        // Clear items so we can see a new updated (refreshed) views. (Only important on secondary loads)
+        myPropertiesList.clear();
+
+        // Update the local properties list to include updated data from DB
         mRootDataReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -88,6 +89,7 @@ public class MyPropertiesActivity extends AppCompatActivity {
                     String myCurrentPropName = myProp.getKey();
                     String id = null;
                     double cost = 0.0;
+                    String photoID = "NULL";
 
                     // Search for needed values (INSIDE the Global Props)
                     for (DataSnapshot globalProp : globalPropReference.getChildren()) {
@@ -97,6 +99,8 @@ public class MyPropertiesActivity extends AppCompatActivity {
                             id = globalProp.getKey();
                             cost = globalProp.child(ShowPropertiesActivity.
                                     PROPERTY_VALUE_KEY).getValue(Double.class);
+                            photoID = globalProp.child(ShowPropertiesActivity.
+                                    PROPERTY_PHOTO_ID_KEY).getValue(String.class);
                         }
                     }
 
@@ -105,10 +109,12 @@ public class MyPropertiesActivity extends AppCompatActivity {
                     */
                     if (id != null) {
                         myPropertiesList.add(new Property(id,
-                                myCurrentPropName, cost,
-                                (double) myProp.child(MainActivity.USER_PROP_OWNED_AMOUNT).
-                                        getValue(),
-                                (double) myProp.child(MainActivity.USER_PROP_CASH_BENEFITS_AMOUNT).
+                                myCurrentPropName,
+                                photoID,
+                                cost,
+                                myProp.child(MainActivity.USER_PROP_OWNED_AMOUNT).
+                                        getValue(Double.class),
+                                myProp.child(MainActivity.USER_PROP_CASH_BENEFITS_AMOUNT).
                                         getValue(Double.class)));
                     }
                 }
@@ -167,7 +173,7 @@ public class MyPropertiesActivity extends AppCompatActivity {
     /**
      * Refresh properties if result is okay.
      * @param requestCode The activity that opened the Activity being returned from
-     * @param resultCode The result. Howd it go?
+     * @param resultCode The result. How'd it go?
      * @param data NULL
      */
     @Override

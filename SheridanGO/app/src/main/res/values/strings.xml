@@ -45,5 +45,7 @@
     <string name="txt_myprop_ownedpercent_text">%d</string>
     <string name="txt_myprop_income_text">%d</string>
     <string name="txt_income_owned_label_myprop_manager">Owned: %.2f%% - Income(per hour): $%.2f</string>
+    <string name="txt_income_owned_label_myprop_manager_buy_preview">Owned: %.2f%% + %.2f%% - Income(per hour): $%.2f + $%.2f</string>
+    <string name="txt_income_owned_label_myprop_manager_sell_preview">Owned: %.2f%% - %.2f%% - Income(per hour): $%.2f - $%.2f</string>
     <string name="dialoge_background_pay_notification_text">Paid $%.2f for %02d hours, %02d minutes, and %02d seconds!</string>
 </resources>

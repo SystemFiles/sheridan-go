@@ -233,13 +233,6 @@ public class InvestingAssistant {
                                     userReference.child(displayName).child(MainActivity.USER_CASH_KEY)
                                             .setValue((userCashValue - costAmount));
 
-                                    // Update investAmount on property
-                                    userReference.getParent().child(MainActivity.PROPERTY_DB_REF_KEY).
-                                            child(selectedProperty.getmID()).
-                                            child(ShowPropertiesActivity.PROPERTY_INVEST_TOTAL_KEY).
-                                            setValue(selectedProperty.getmInvestAmount() +
-                                                    investSellAmountPercent);
-
                                     // Update user property value holding
                                     userReference.child(displayName).child(MainActivity.USER_PROPERTY_TOTAL_VALUE)
                                             .setValue(userPropertyValue + (selectedProperty.getmCost()
@@ -252,13 +245,19 @@ public class InvestingAssistant {
                                                 child(displayName).child(MainActivity.USER_MY_PROPERTIES_KEY)
                                                 .child(selectedProperty.getmName()).setValue(selectedProperty.getmID());
 
+                                        // Update GLOBAL investAmount on property (NOT OWNED)
+                                        userReference.getParent().child(MainActivity.PROPERTY_DB_REF_KEY).
+                                                child(selectedProperty.getmID()).
+                                                child(ShowPropertiesActivity.PROPERTY_INVEST_TOTAL_KEY).
+                                                setValue(selectedProperty.getmInvestAmount() +
+                                                        investSellAmountPercent);
+
                                         // Add The amount owned to the property item.
                                         userReference.getParent().child(MainActivity.USER_LIST_KEY_PARENT).
                                                 child(displayName).child(MainActivity.USER_MY_PROPERTIES_KEY)
                                                 .child(selectedProperty.getmName()).
                                                 child(MainActivity.USER_PROP_OWNED_AMOUNT).
                                                 setValue(investSellAmountPercent);
-
                                     } else {
                                         try {
                                             // If the user does own shares, get the amount owned and update
@@ -268,12 +267,21 @@ public class InvestingAssistant {
                                                     child(MainActivity.USER_PROP_OWNED_AMOUNT).
                                                     getValue(Double.class);
 
+                                            // Update User property owned amount
                                             userReference.getParent().child(MainActivity.USER_LIST_KEY_PARENT).
                                                     child(displayName).child(MainActivity.USER_MY_PROPERTIES_KEY)
                                                     .child(selectedProperty.getmName()).
                                                     child(MainActivity.USER_PROP_OWNED_AMOUNT).
                                                     setValue(currentOwnedAmount + investSellAmountPercent);
 
+                                            // Update GLOBAL investAmount on property (IF OWNED)
+                                            userReference.getParent().child(MainActivity.PROPERTY_DB_REF_KEY).
+                                                    child(selectedProperty.getmID()).
+                                                    child(ShowPropertiesActivity.PROPERTY_INVEST_TOTAL_KEY).
+                                                    setValue(selectedProperty.getmPercentageOwned() +
+                                                            investSellAmountPercent);
+
+                                            // Get the old benefits
                                             oldBenefits = dataSnapshot.
                                                     child(MainActivity.USER_MY_PROPERTIES_KEY).
                                                     child(selectedProperty.getmName()).
@@ -284,17 +292,18 @@ public class InvestingAssistant {
                                         }
                                     }
 
-                                    // Setting cashBenefitsCalculated to database so we can get it later
-                                    // from the database...
+                                    // Update cash benefits
                                     userReference.child(displayName)
                                             .child(MainActivity.USER_MY_PROPERTIES_KEY).
                                             child(selectedProperty.getmName())
                                             .child(MainActivity.USER_PROP_CASH_BENEFITS_AMOUNT).
-                                            setValue(oldBenefits + cashBenefitsCalculated);
+                                            setValue(oldBenefits + calculateCashBenefits(costAmount));
 
                                     Toast.makeText(context.getApplicationContext(),
                                             "Investment successful!", Toast.LENGTH_LONG).show();
                                     Log.i(TAG, "investInProperty: User successfully invested in the selected property!");
+
+                                    fireWantToExit();
                                 } else {
                                     Toast.makeText(context.getApplicationContext(),
                                             "Sorry, it seems you want to invest too much in this property!",
