@@ -118,7 +118,7 @@ public class MyPropertyManager extends AppCompatActivity {
                 final int CLOSE = 1;
                 double investAmount = Double.parseDouble(txtInvestMorePercent.getText().toString());
 
-                if (investAmount > selectedProperty.getmPercentageOwned()
+                if (investAmount > (100 - (selectedProperty.getmPercentageOwned() * 100))
                         || investAmount < 0
                         || txtInvestMorePercent.getText().toString().length() == 0) {
                     Log.i(TAG, "investInProperty: Invalid input");
@@ -211,12 +211,11 @@ public class MyPropertyManager extends AppCompatActivity {
         btnSellShares.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /* TODO: Keep an eye on this, still needs more testing*/
                 final int CLOSE = 1; // number to identify what happens
                 double sellPercent = Double.parseDouble(txtSellPercent.getText().toString());
 
                 // Make sure the user entered a valid sell percent
-                if (sellPercent < 100 && sellPercent > 0) {
+                if (sellPercent <= (selectedProperty.getmPercentageOwned()*100) && sellPercent > 0) {
                     // Get an assistant to help with selling
                     InvestingAssistant investingAssistant =
                             new InvestingAssistant(selectedProperty, selectedProperty.getmIncomeBenefits(),

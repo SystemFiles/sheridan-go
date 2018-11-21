@@ -96,11 +96,12 @@ public class NewPropertyManager extends AppCompatActivity {
                 // Check first to make sure we are working with something.
                 if (!(txtEnterInvestAmount.getText().toString().isEmpty())) {
                     int invAmountEntered = Integer.parseInt(txtEnterInvestAmount.getText().toString());
+                    double allowedInvestTotal = 100 - (selectedProperty.getmInvestAmount() * 100);
 
                     // Update the cash cost based on the percent the user would like to buy
-                    if (invAmountEntered > selectedProperty.getmInvestAmount() || invAmountEntered < 1) {
+                    if (invAmountEntered > allowedInvestTotal || invAmountEntered < 1) {
                         txtEnterInvestAmount.setError(String.format("Error: Enter percent value between 1-%.2f.",
-                                selectedProperty.getmInvestAmount()));
+                                allowedInvestTotal));
                     } else {
                         double costAmount = ((selectedProperty.getmCost() * ((double) invAmountEntered / 100))
                                 * 1.100621224124 + 100);
@@ -143,7 +144,7 @@ public class NewPropertyManager extends AppCompatActivity {
         final int CLOSE = 1;
         String investAmount = txtEnterInvestAmount.getText().toString();
 
-        if (Integer.parseInt(investAmount) > selectedProperty.getmInvestAmount()
+        if (Integer.parseInt(investAmount) > (100 - (selectedProperty.getmInvestAmount() * 100))
                 || Integer.parseInt(investAmount) < 0
                 || investAmount.length() == 0) {
             Log.i(TAG, "investInProperty: Invalid input");
