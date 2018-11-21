@@ -1,4 +1,4 @@
-package model;
+package ca.sykesdev.sheridango.model;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -131,8 +131,8 @@ public class InvestingAssistant {
                                 child(selectedProperty.getmName()).child(MainActivity.
                                 USER_PROP_CASH_BENEFITS_AMOUNT).setValue(newCashBenefits);
 
-                        // Update user cash
-                        double newUserCash = userCashValue + getRefundAmount();
+                        // Update user cash (Varies a tiny bit due to database storage precision error on Google's End)
+                        double newUserCash = (userCashValue + getRefundAmount());
                         userReference.child(displayName).child(MainActivity.USER_CASH_KEY)
                                 .setValue(newUserCash);
 

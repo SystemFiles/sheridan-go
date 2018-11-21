@@ -16,14 +16,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.firebase.database.FirebaseDatabase;
-
-import model.InvestingAssistant;
-import model.OnWantToExitListener;
-import model.PhotoHelper;
-import model.Property;
+import ca.sykesdev.sheridango.model.InvestingAssistant;
+import ca.sykesdev.sheridango.model.OnWantToExitListener;
+import ca.sykesdev.sheridango.model.PhotoHelper;
+import ca.sykesdev.sheridango.model.Property;
 
 public class MyPropertyManager extends AppCompatActivity {
 
@@ -121,10 +118,11 @@ public class MyPropertyManager extends AppCompatActivity {
                 final int CLOSE = 1;
                 double investAmount = Double.parseDouble(txtInvestMorePercent.getText().toString());
 
-                if (investAmount > 100
+                if (investAmount > selectedProperty.getmPercentageOwned()
                         || investAmount < 0
-                        || txtInvestMorePercent.length() == 0) {
-                    txtInvestMorePercent.setError("Error: Invalid input! Try again..");
+                        || txtInvestMorePercent.getText().toString().length() == 0) {
+                    Log.i(TAG, "investInProperty: Invalid input");
+                    txtInvestMorePercent.setError("Error: Invalid input.");
                 } else {
                     InvestingAssistant investingAssistant = new
                             InvestingAssistant(selectedProperty,

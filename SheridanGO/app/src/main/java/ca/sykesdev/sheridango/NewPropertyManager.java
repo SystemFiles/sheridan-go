@@ -16,15 +16,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
-import model.InvestingAssistant;
-import model.OnWantToExitListener;
-import model.PhotoHelper;
-import model.Property;
+import ca.sykesdev.sheridango.model.InvestingAssistant;
+import ca.sykesdev.sheridango.model.OnWantToExitListener;
+import ca.sykesdev.sheridango.model.PhotoHelper;
+import ca.sykesdev.sheridango.model.Property;
 
 public class NewPropertyManager extends AppCompatActivity {
 
@@ -102,8 +98,9 @@ public class NewPropertyManager extends AppCompatActivity {
                     int invAmountEntered = Integer.parseInt(txtEnterInvestAmount.getText().toString());
 
                     // Update the cash cost based on the percent the user would like to buy
-                    if (invAmountEntered > 100 || invAmountEntered < 1) {
-                        txtEnterInvestAmount.setError("Error: Enter percent value between 1-100.");
+                    if (invAmountEntered > selectedProperty.getmInvestAmount() || invAmountEntered < 1) {
+                        txtEnterInvestAmount.setError(String.format("Error: Enter percent value between 1-%.2f.",
+                                selectedProperty.getmInvestAmount()));
                     } else {
                         double costAmount = ((selectedProperty.getmCost() * ((double) invAmountEntered / 100))
                                 * 1.100621224124 + 100);
@@ -146,7 +143,7 @@ public class NewPropertyManager extends AppCompatActivity {
         final int CLOSE = 1;
         String investAmount = txtEnterInvestAmount.getText().toString();
 
-        if (Integer.parseInt(investAmount) > 100
+        if (Integer.parseInt(investAmount) > selectedProperty.getmInvestAmount()
                 || Integer.parseInt(investAmount) < 0
                 || investAmount.length() == 0) {
             Log.i(TAG, "investInProperty: Invalid input");

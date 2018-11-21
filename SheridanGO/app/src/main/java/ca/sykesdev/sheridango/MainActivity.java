@@ -222,7 +222,7 @@ public class MainActivity extends AppCompatActivity{
                                     mBackgroundPay,
                                     TimeUnit.MILLISECONDS.toHours(timeMilisFromLastExecute),
                                     TimeUnit.MILLISECONDS.toMinutes(timeMilisFromLastExecute) -
-                                            TimeUnit.MINUTES.toMinutes(TimeUnit.MILLISECONDS.toHours(timeMilisFromLastExecute)),
+                                            TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(timeMilisFromLastExecute)),
                                     TimeUnit.MILLISECONDS.toSeconds(timeMilisFromLastExecute) -
                                             TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(timeMilisFromLastExecute)));
 

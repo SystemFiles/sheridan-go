@@ -10,7 +10,6 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.AsyncTask;
-import android.os.Parcelable;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -33,10 +32,10 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-import model.ClickListener;
-import model.PlacesHelper;
-import model.PlacesRecyclerAdapter;
-import model.Property;
+import ca.sykesdev.sheridango.model.ClickListener;
+import ca.sykesdev.sheridango.model.PlacesHelper;
+import ca.sykesdev.sheridango.model.PlacesRecyclerAdapter;
+import ca.sykesdev.sheridango.model.Property;
 
 public class ShowPropertiesActivity extends AppCompatActivity {
 

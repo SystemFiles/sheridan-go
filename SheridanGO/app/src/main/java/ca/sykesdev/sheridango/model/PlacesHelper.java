@@ -1,7 +1,6 @@
-package model;
+package ca.sykesdev.sheridango.model;
 
 import android.content.Context;
-import android.media.Image;
 import android.util.Log;
 
 import org.json.JSONArray;
@@ -15,7 +14,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-import ca.sykesdev.sheridango.MainActivity;
 import ca.sykesdev.sheridango.R;
 
 public class PlacesHelper {

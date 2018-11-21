@@ -1,4 +1,4 @@
-package model;
+package ca.sykesdev.sheridango.model;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
