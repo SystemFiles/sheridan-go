@@ -76,8 +76,6 @@ public class ShowPropertiesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_properties);
 
-        // Get location permissions and start tracking location
-        getLocationPermissions();
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
                 5000, 10, locationListener);
@@ -135,26 +133,6 @@ public class ShowPropertiesActivity extends AppCompatActivity {
             }
         });
         rAvailablePropertyView.setAdapter(adapter);
-    }
-
-    /**
-     * Get required location permissions for app.
-     */
-    private void getLocationPermissions() {
-        String[] permissions = {android.Manifest.permission.ACCESS_FINE_LOCATION,
-                Manifest.permission.ACCESS_COARSE_LOCATION};
-
-        if (ContextCompat.checkSelfPermission(getApplicationContext(),
-                ACCESS_FINE_LOCATION_PERM) == PackageManager.PERMISSION_GRANTED) {
-            if (ContextCompat.checkSelfPermission(getApplicationContext(),
-                    ACCESS_COARSE_LOCATION_PERM) == PackageManager.PERMISSION_GRANTED) {
-                mLocationPermissionsGranted = true;
-            } else {
-                ActivityCompat.requestPermissions(this,
-                        permissions,
-                        LOCATION_PERMISSION_REQUEST_CODE);
-            }
-        }
     }
 
     /**
