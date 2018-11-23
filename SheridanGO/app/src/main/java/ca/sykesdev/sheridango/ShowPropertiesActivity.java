@@ -45,8 +45,7 @@ public class ShowPropertiesActivity extends AppCompatActivity {
     private RecyclerView rAvailablePropertyView;
 
     // Location Variables and Places
-    private double mLatitude;
-    private double mLongitude;
+    private double mLatitude, mLongitude;
     private LocationManager locationManager;
     private ArrayList<Property> propertiesList;
 
@@ -110,7 +109,7 @@ public class ShowPropertiesActivity extends AppCompatActivity {
                         @SuppressLint("MissingPermission") Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
                         RequestPlacesTask requestPlacesTask = new RequestPlacesTask();
                         requestPlacesTask.execute(location.getLatitude(),
-                                location.getLongitude(), 1500.0);
+                                location.getLongitude(), 500.0);
                     }
                 });
             }

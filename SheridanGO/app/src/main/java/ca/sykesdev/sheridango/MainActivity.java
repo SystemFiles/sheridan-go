@@ -113,7 +113,6 @@ public class MainActivity extends AppCompatActivity{
                 equalsIgnoreCase("NULL")) {
             Log.e(TAG, "onCreate: Cannot pay for offline time when this " +
                     "is the first time the user is opening the app!");
-
         } else {
             // Pay the user for time since they last opened the app
             payForOfflineTime();
@@ -154,6 +153,9 @@ public class MainActivity extends AppCompatActivity{
 
     }
 
+    /**
+     * Save user current time for offline pay next time they log in.
+     */
     @Override
     protected void onStop() {
         super.onStop();
@@ -194,6 +196,7 @@ public class MainActivity extends AppCompatActivity{
                 addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        //TODO: Fix payingForBackground clause
                         boolean payingForBackground = (mBackgroundPay == 0);
                         mBackgroundPay = 0;
                         // Get total amount that needs to be paid out to the user this hour...
@@ -389,15 +392,14 @@ public class MainActivity extends AppCompatActivity{
                 Toast.LENGTH_LONG).show();
 
         // Setup dataBase stuff for this user...
-        getDatabase();
-        mCurUserDataRef.child(USER_CASH_KEY).setValue(50000.0);
+        mCurUserDataRef.child(USER_CASH_KEY).setValue(12000.0);
         mCurUserDataRef.child(USER_PROPERTY_TOTAL_VALUE).setValue(0);
         mCurUserDataRef.child(USER_REVENUE_GAIN_KEY).setValue(0);
         mCurUserDataRef.child(USER_MY_PROPERTIES_KEY); // Just create the store location for now.
 
         // Set name on creation of user
         txtDisplayName.setText(String.format(getString(R.string.txt_username_displayname),
-                curUserPrefs.getString(DISPLAY_NAME_KEY, "NULL")));
+                displayName));
     }
 
     /**
