@@ -49,14 +49,11 @@ public class MainActivity extends AppCompatActivity{
     public static final String USER_MY_PROPERTIES_KEY = "currentProperties";
     public static final String USER_PROP_OWNED_AMOUNT = "propOwnedAmount";
     public static final String USER_PROP_CASH_BENEFITS_AMOUNT = "cashBenefitsAmount";
+    public static final int RESULT_ERROR = 9005;
 
     public static final int MAIN_ACTIVITY = 0; // IMPORTANT (DO NOT DELETE)
     private final String TAG = "MAIN_ACTIVITY";
     private final int ERROR_DIALOG_REQUEST = 9001;
-    private final String ACCESS_FINE_LOCATION_PERM = Manifest.permission.ACCESS_FINE_LOCATION;
-    private final String ACCESS_COARSE_LOCATION_PERM = Manifest.permission.ACCESS_COARSE_LOCATION;
-    private boolean mLocationPermissionsGranted = false;
-    private final int LOCATION_PERMISSION_REQUEST_CODE = 9002;
     private SharedPreferences curUserPrefs;
     private TimerTask mIncomeTmrTask;
     private double mBackgroundPay;
@@ -107,9 +104,6 @@ public class MainActivity extends AppCompatActivity{
         if (isServicesOK()) {
             checkLogon();
             getDatabase();
-
-            // Get location permissions and start tracking location
-            getLocationPermissions();
         } else {
             Log.e(TAG, "onCreate: Fatal error: Application will not work " +
                     "without correct Google Play Services");
@@ -320,6 +314,9 @@ public class MainActivity extends AppCompatActivity{
                         "report");
             } else if (resultCode == RESULT_FIRST_USER) {
                 setupNewUser(data.getStringExtra(DISPLAY_NAME_KEY));
+            } else if (resultCode == RESULT_ERROR) {
+                Log.e(TAG, "onActivityResult: Location Permissions not granted.. " +
+                        "cannot view available properties");
             } else {
                 Log.i(TAG, "onActivityResult: No new information returned...");
                 checkLogon();
@@ -462,51 +459,4 @@ public class MainActivity extends AppCompatActivity{
                     "Remote server error..cannot access database.");
         }
     };
-
-    /**
-     * Get required location permissions for app.
-     */
-    private void getLocationPermissions() {
-        String[] permissions = {android.Manifest.permission.ACCESS_FINE_LOCATION,
-                Manifest.permission.ACCESS_COARSE_LOCATION};
-
-        if (ContextCompat.checkSelfPermission(getApplicationContext(),
-                ACCESS_FINE_LOCATION_PERM) == PackageManager.PERMISSION_GRANTED) {
-            if (ContextCompat.checkSelfPermission(getApplicationContext(),
-                    ACCESS_COARSE_LOCATION_PERM) == PackageManager.PERMISSION_GRANTED) {
-                mLocationPermissionsGranted = true;
-            } else {
-                ActivityCompat.requestPermissions(this,
-                        permissions,
-                        LOCATION_PERMISSION_REQUEST_CODE);
-            }
-        }
-    }
-
-    /**
-     * Result from asking the user for permissions to use the APP
-     * @param requestCode This Activities request code
-     * @param permissions The permissions list
-     * @param grantResults The permissions that have been granted..
-     */
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        mLocationPermissionsGranted = false;
-
-        switch (requestCode) {
-            case LOCATION_PERMISSION_REQUEST_CODE: {
-                if (grantResults.length > 0) {
-                    for (int i = 0; i < grantResults.length; i++) {
-                        if (grantResults[i] != PackageManager.PERMISSION_GRANTED) {
-                            mLocationPermissionsGranted = false;
-                            Log.e(TAG, "onRequestPermissionsResult: Error: Could not get the required permissions..App will not work!");
-                            break;
-                        }
-                    }
-
-                    mLocationPermissionsGranted = true;
-                }
-            }
-        }
-    }
 }

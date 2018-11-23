@@ -30,6 +30,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.security.Permission;
 import java.util.ArrayList;
 
 import ca.sykesdev.sheridango.model.ClickListener;
@@ -44,9 +45,9 @@ public class ShowPropertiesActivity extends AppCompatActivity {
     private RecyclerView rAvailablePropertyView;
 
     // Location Variables and Places
-    private LocationManager locationManager;
     private double mLatitude;
     private double mLongitude;
+    private LocationManager locationManager;
     private ArrayList<Property> propertiesList;
 
     // Constants for Properties DB Interaction/Parsing
@@ -63,38 +64,57 @@ public class ShowPropertiesActivity extends AppCompatActivity {
     public static final int SHOW_PROPERTIES_ACTIVITY = 1; // IMPORTANT (DO NOT DELETE)
     private final String TAG = "SHOW_PROPERTIES_ACT";
     public static final String PROPERTY_LIST_INTENT_KEY = "propertyArrayList";
-    private final int ERROR_DIALOG_REQUEST = 9001;
     private final String ACCESS_FINE_LOCATION_PERM = Manifest.permission.ACCESS_FINE_LOCATION;
     private final String ACCESS_COARSE_LOCATION_PERM = Manifest.permission.ACCESS_COARSE_LOCATION;
-    private boolean mLocationPermissionsGranted = false;
+    private boolean mLocationPermissionsGranted = true;
     private final int LOCATION_PERMISSION_REQUEST_CODE = 9002;
 
-    // Suppressing warning because we are checking for location before anyways (no need to check twice)
-    @SuppressLint("MissingPermission")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_properties);
 
-        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
-                5000, 10, locationListener);
+        // Setup everything for the activity
+        setupActivity();
+    }
 
-        // Get User Preferences for use later
-        curUserPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+    /**
+     * Sets up the activity
+     */
+    private void setupActivity() {
+        if (ContextCompat.checkSelfPermission(this, ACCESS_FINE_LOCATION_PERM)
+                != PackageManager.PERMISSION_GRANTED
+                || ContextCompat.checkSelfPermission(this, ACCESS_COARSE_LOCATION_PERM)
+                != PackageManager.PERMISSION_GRANTED) {
+            mLocationPermissionsGranted = false;
+            // No explanation needed; request the permission
+            ActivityCompat.requestPermissions(this,
+                    new String[]{ACCESS_COARSE_LOCATION_PERM, ACCESS_FINE_LOCATION_PERM},
+                    LOCATION_PERMISSION_REQUEST_CODE);
+        } else {
+            if (mLocationPermissionsGranted) {
+                Log.i(TAG, "onCreate: Location Permissions granted! Continuing");
+                locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
+                        5000, 10, locationListener);
 
-        // Init Control Variables
-        btnRefresh = findViewById(R.id.btnRefresh);
-        rAvailablePropertyView = findViewById(R.id.rAvailableProperties);
-        btnRefresh.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-                RequestPlacesTask requestPlacesTask = new RequestPlacesTask();
-                requestPlacesTask.execute(location.getLatitude(),
-                        location.getLongitude(), 1500.0);
+                // Get User Preferences for use later
+                curUserPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+
+                // Init Control Variables
+                btnRefresh = findViewById(R.id.btnRefresh);
+                rAvailablePropertyView = findViewById(R.id.rAvailableProperties);
+                btnRefresh.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        @SuppressLint("MissingPermission") Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                        RequestPlacesTask requestPlacesTask = new RequestPlacesTask();
+                        requestPlacesTask.execute(location.getLatitude(),
+                                location.getLongitude(), 1500.0);
+                    }
+                });
             }
-        });
+        }
     }
 
     /**
@@ -133,33 +153,6 @@ public class ShowPropertiesActivity extends AppCompatActivity {
             }
         });
         rAvailablePropertyView.setAdapter(adapter);
-    }
-
-    /**
-     * What to do after we request needed permissions
-     * @param requestCode The Request Code for this type of request
-     * @param permissions List of required permissions
-     * @param grantResults The results of the operation (did we get the permissions?)
-     */
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        mLocationPermissionsGranted = false;
-
-        switch (requestCode) {
-            case LOCATION_PERMISSION_REQUEST_CODE: {
-                if (grantResults.length > 0) {
-                    for (int i = 0; i < grantResults.length; i++) {
-                        if (grantResults[i] != PackageManager.PERMISSION_GRANTED) {
-                            mLocationPermissionsGranted = false;
-                            Log.e(TAG, "onRequestPermissionsResult: Error: Could not get the required permissions..App will not work!");
-                            break;
-                        }
-                    }
-
-                    mLocationPermissionsGranted = true;
-                }
-            }
-        }
     }
 
     /**
@@ -304,6 +297,34 @@ public class ShowPropertiesActivity extends AppCompatActivity {
         if (requestCode == SHOW_PROPERTIES_ACTIVITY) {
             if (resultCode == RESULT_OK) {
                 Log.i(TAG, "onActivityResult: Returned from new property manager...");
+            }
+        }
+    }
+
+    /**
+     * What to do after we request needed permissions
+     * @param requestCode The Request Code for this type of request
+     * @param permissions List of required permissions
+     * @param grantResults The results of the operation (did we get the permissions?)
+     */
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        mLocationPermissionsGranted = false;
+
+        switch (requestCode) {
+            case LOCATION_PERMISSION_REQUEST_CODE: {
+                if (grantResults.length > 0) {
+                    for (int i = 0; i < grantResults.length; i++) {
+                        if (grantResults[i] != PackageManager.PERMISSION_GRANTED) {
+                            mLocationPermissionsGranted = false;
+                            Log.e(TAG, "onRequestPermissionsResult: Error: Could not get the required permissions..App will not work!");
+                            break;
+                        }
+                    }
+
+                    mLocationPermissionsGranted = true;
+                    setupActivity();
+                }
             }
         }
     }
