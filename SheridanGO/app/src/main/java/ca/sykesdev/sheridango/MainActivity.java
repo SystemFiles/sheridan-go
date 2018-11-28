@@ -196,7 +196,6 @@ public class MainActivity extends AppCompatActivity{
                 addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        //TODO: Fix payingForBackground clause
                         boolean payingForBackground = (mBackgroundPay == 0);
                         mBackgroundPay = 0;
                         // Get total amount that needs to be paid out to the user this hour...
@@ -392,6 +391,7 @@ public class MainActivity extends AppCompatActivity{
                 Toast.LENGTH_LONG).show();
 
         // Setup dataBase stuff for this user...
+        getDatabase();
         mCurUserDataRef.child(USER_CASH_KEY).setValue(12000.0);
         mCurUserDataRef.child(USER_PROPERTY_TOTAL_VALUE).setValue(0);
         mCurUserDataRef.child(USER_REVENUE_GAIN_KEY).setValue(0);
