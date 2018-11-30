@@ -45,6 +45,7 @@
             android:layout_marginStart="100dp"
             android:ems="10"
             android:hint="@string/hint_enter_displayName_text"
+            android:digits=" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
             android:inputType="textPersonName"
             android:textAlignment="center"
             android:importantForAutofill="no" tools:targetApi="o" />
