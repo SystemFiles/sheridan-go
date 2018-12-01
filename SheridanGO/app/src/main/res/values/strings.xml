@@ -17,8 +17,9 @@
     <string name="lbl_invest_more_text">Invest more!</string>
     <string name="place_title_default">Sheridan College</string>
     <string name="lbl_invest_percent_text">Invest Percentage</string>
-    <string name="txtfield_enter_invest_value_text">enter invest amt</string>
+    <string name="txtfield_enter_invest_value_text">enter invest</string>
     <string name="btn_buy_text">BUY</string>
+    <string name="lbl_sell_caption_text">Sell Shares (Property)</string>
     <string name="lbl_sell_percentage_text">Sell Percentage</string>
     <string name="txtField_sell_amount_hint">enter sell amt</string>
     <string name="btn_sell_text">SELL</string>
@@ -38,4 +39,13 @@
     <string name="txt_property_string_item_value">%s</string>
     <string name="txt_property_number_item_value">%d</string>
     <string name="btn_show_details_text">Show Details</string>
+    <string name="txt_cash_benefits_text">Income With Selected Investment (Per Hour): $%.2f</string>
+
+    <string name="txt_myprop_name_text">%s</string>
+    <string name="txt_myprop_ownedpercent_text">%d</string>
+    <string name="txt_myprop_income_text">%d</string>
+    <string name="txt_income_owned_label_myprop_manager">Owned: %.2f%% - Income(per hour): $%.2f</string>
+    <string name="txt_income_owned_label_myprop_manager_buy_preview">Owned: %.2f%% + %.2f%% - Income(per hour): $%.2f + $%.2f</string>
+    <string name="txt_income_owned_label_myprop_manager_sell_preview">Owned: %.2f%% - %.2f%% - Income(per hour): $%.2f - $%.2f</string>
+    <string name="dialoge_background_pay_notification_text">Paid $%.2f for %02d hours, %02d minutes, and %02d seconds!</string>
 </resources>

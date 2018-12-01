@@ -58,7 +58,6 @@ public class LoginActivity extends AppCompatActivity {
                             txtDisplayName.setError("Error: Name already taken by another user!" +
                                     " Please try again");
                             Log.e(TAG, "onClick: User tried to user name that was already taken...");
-                            return;
                         } else {
                             // Name is unique, continue with user creation..
                             Log.i(TAG, "onDataChange: Name unique... Creating user!");

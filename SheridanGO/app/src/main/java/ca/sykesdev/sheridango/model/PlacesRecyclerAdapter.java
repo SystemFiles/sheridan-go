@@ -1,4 +1,4 @@
-package model;
+package ca.sykesdev.sheridango.model;
 
 import android.annotation.SuppressLint;
 import android.support.annotation.NonNull;
@@ -14,7 +14,6 @@ import android.widget.TextView;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
-import ca.sykesdev.sheridango.MainActivity;
 import ca.sykesdev.sheridango.R;
 
 /**
@@ -33,6 +32,9 @@ public class PlacesRecyclerAdapter extends RecyclerView.Adapter<PlacesRecyclerAd
         mProperties = places;
     }
 
+    /**
+     * View holder for places object.
+     */
     public static class PlacesViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         // LOGING CONSTANT
@@ -86,7 +88,6 @@ public class PlacesRecyclerAdapter extends RecyclerView.Adapter<PlacesRecyclerAd
         String format = "%s";
         String nFormat = "%.2f";
 
-        // TODO: Fix error where values in Recycler view only represent initialized place values for cost and InvestAmt...
         // Set the text for each place...
         placeViewHolder.mTxtPlaceName.setText(String.format(format,
                 mProperties.get(position).getmName()));

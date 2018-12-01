@@ -1,10 +1,9 @@
 package ca.sykesdev.sheridango;
 
 import android.Manifest;
-import android.app.Activity;
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,7 +11,6 @@ import android.content.pm.PackageManager;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.multidex.MultiDex;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -34,26 +32,31 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity{
 
     // This applications requestCode and other important constants
     public static final String DISPLAY_NAME_KEY = "displayName";
+    public static final String APPLICATION_EXIT_TIME_KEY = "exitTime";
     public static final String USER_LIST_KEY_PARENT = "users";
     public static final String PROPERTY_DB_REF_KEY = "properties";
     public static final String USER_CASH_KEY = "totalCash";
     public static final String USER_PROPERTY_TOTAL_VALUE = "totalPropertyValue";
     public static final String USER_REVENUE_GAIN_KEY = "totalRevenueValue";
     public static final String USER_MY_PROPERTIES_KEY = "currentProperties";
+    public static final String USER_PROP_OWNED_AMOUNT = "propOwnedAmount";
+    public static final String USER_PROP_CASH_BENEFITS_AMOUNT = "cashBenefitsAmount";
+    public static final int RESULT_ERROR = 9005;
 
     public static final int MAIN_ACTIVITY = 0; // IMPORTANT (DO NOT DELETE)
     private final String TAG = "MAIN_ACTIVITY";
     private final int ERROR_DIALOG_REQUEST = 9001;
-    private final String ACCESS_FINE_LOCATION_PERM = Manifest.permission.ACCESS_FINE_LOCATION;
-    private final String ACCESS_COARSE_LOCATION_PERM = Manifest.permission.ACCESS_COARSE_LOCATION;
-    private boolean mLocationPermissionsGranted = false;
-    private final int LOCATION_PERMISSION_REQUEST_CODE = 9002;
     private SharedPreferences curUserPrefs;
+    private TimerTask mIncomeTmrTask;
+    private double mBackgroundPay;
 
     // firebase DB variables
     private static final FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
@@ -65,7 +68,6 @@ public class MainActivity extends AppCompatActivity{
     private TextView txtMyProperties, txtDisplayName, txtUserCash, txtPropertyValue,
             txtRevenueGained;
     private ProgressBar progAggregatePropertyValue;
-
     private Button btnShowAvailableProperties, btnOpenPremiumCashShop;
 
     @Override
@@ -107,12 +109,23 @@ public class MainActivity extends AppCompatActivity{
                     "without correct Google Play Services");
         }
 
+        if (curUserPrefs.getString(DISPLAY_NAME_KEY, "NULL").
+                equalsIgnoreCase("NULL")) {
+            Log.e(TAG, "onCreate: Cannot pay for offline time when this " +
+                    "is the first time the user is opening the app!");
+        } else {
+            // Pay the user for time since they last opened the app
+            payForOfflineTime();
+
+            // Setup paying service for the user
+            setupPayServices();
+        }
+
         // Set Name for the current user HERE (Don't need to update constantly for obvious reasons)
         txtDisplayName.setText(String.format(getString(R.string.txt_username_displayname),
                 curUserPrefs.getString(DISPLAY_NAME_KEY, "NULL")));
 
         // Setup Button Listeners
-
         /**
          * Open the available properties window
          */
@@ -137,6 +150,103 @@ public class MainActivity extends AppCompatActivity{
                 Log.e(TAG, "User tried to use a feature not implemented yet.");
             }
         });
+
+    }
+
+    /**
+     * Save user current time for offline pay next time they log in.
+     */
+    @Override
+    protected void onStop() {
+        super.onStop();
+        // Set time when user exited the application
+        SharedPreferences.Editor editor = curUserPrefs.edit();
+        editor.putLong(APPLICATION_EXIT_TIME_KEY, System.currentTimeMillis());
+        editor.apply();
+
+        Log.i(TAG, "onStop: Saved time of app exit.");
+    }
+
+    /**
+     * Save time of exit when destroying application
+     */
+
+    /**
+     * Pay the user for the time since they have been offline
+     */
+    private  void payForOfflineTime() {
+        long timeSinceExit = (System.currentTimeMillis() -
+                curUserPrefs.getLong(APPLICATION_EXIT_TIME_KEY, 0));
+        getIncomeForTime(timeSinceExit);
+
+        Log.i(TAG, "payForOfflineTime: Paid user for time since they have been offline.");
+    }
+
+    /**
+     * Gets income rel to the time of last payout...
+     * @param timeMilisFromLastExecute Time in miliseconds since last execution
+     */
+    @SuppressLint("DefaultLocale")
+    private void getIncomeForTime(final long timeMilisFromLastExecute) {
+        Log.i(TAG, "GetIncomeForTime: Getting cash income from all owned properties...");
+        final double TIME_HOURS = (timeMilisFromLastExecute / 1000.0 / 60.0 / 60.0);
+
+        // Update income for current user..
+        mCurUserDataRef.
+                addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        boolean payingForBackground = (mBackgroundPay == 0);
+                        mBackgroundPay = 0;
+                        // Get total amount that needs to be paid out to the user this hour...
+                        for (DataSnapshot ds : dataSnapshot.
+                                child(USER_MY_PROPERTIES_KEY).getChildren()) {
+                            mBackgroundPay += ((double) ds.
+                                    child(USER_PROP_CASH_BENEFITS_AMOUNT).getValue()) * TIME_HOURS;
+                        }
+
+                        // Set users new cash amount to current plus the total paid for this hour
+                        mCurUserDataRef.child(USER_CASH_KEY).
+                                setValue(dataSnapshot.child(USER_CASH_KEY).
+                                        getValue(Double.class) + mBackgroundPay);
+
+                        // Also remember to update the users revenue
+                        mCurUserDataRef.child(USER_REVENUE_GAIN_KEY).setValue(
+                                dataSnapshot.child(USER_REVENUE_GAIN_KEY).getValue(Double.class)
+                                        + mBackgroundPay
+                        );
+
+                        if (payingForBackground) {
+                            // Display message to user
+                            String dialogText = String.format(getString(R.string.
+                                            dialoge_background_pay_notification_text),
+                                    mBackgroundPay,
+                                    TimeUnit.MILLISECONDS.toHours(timeMilisFromLastExecute),
+                                    TimeUnit.MILLISECONDS.toMinutes(timeMilisFromLastExecute) -
+                                            TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(timeMilisFromLastExecute)),
+                                    TimeUnit.MILLISECONDS.toSeconds(timeMilisFromLastExecute) -
+                                            TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(timeMilisFromLastExecute)));
+
+                            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                            builder.setMessage(dialogText)
+                                    .setCancelable(false)
+                                    .setPositiveButton("AWESOME!", new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                            Log.i(TAG, "onDialogOkayClick: Returning to Activity");
+                                        }
+                                    });
+                            AlertDialog alert = builder.create();
+                            alert.show();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        // Display error
+                        Log.e(TAG, "onCancelled: Error: Security access or " +
+                                "Remote server error..cannot access database.");
+                    }
+                });
 
     }
 
@@ -202,9 +312,13 @@ public class MainActivity extends AppCompatActivity{
 
         if (requestCode == MAIN_ACTIVITY) {
             if (resultCode == RESULT_OK) {
-                Log.i(TAG, "onActivityResult: Everything is working properly");
+                Log.i(TAG, "onActivityResult: Everything is working properly. Nothing to " +
+                        "report");
             } else if (resultCode == RESULT_FIRST_USER) {
                 setupNewUser(data.getStringExtra(DISPLAY_NAME_KEY));
+            } else if (resultCode == RESULT_ERROR) {
+                Log.e(TAG, "onActivityResult: Location Permissions not granted.. " +
+                        "cannot view available properties");
             } else {
                 Log.i(TAG, "onActivityResult: No new information returned...");
                 checkLogon();
@@ -278,14 +392,31 @@ public class MainActivity extends AppCompatActivity{
 
         // Setup dataBase stuff for this user...
         getDatabase();
-        mCurUserDataRef.child(USER_CASH_KEY).setValue(50000);
+        mCurUserDataRef.child(USER_CASH_KEY).setValue(12000.0);
         mCurUserDataRef.child(USER_PROPERTY_TOTAL_VALUE).setValue(0);
         mCurUserDataRef.child(USER_REVENUE_GAIN_KEY).setValue(0);
         mCurUserDataRef.child(USER_MY_PROPERTIES_KEY); // Just create the store location for now.
 
         // Set name on creation of user
         txtDisplayName.setText(String.format(getString(R.string.txt_username_displayname),
-                curUserPrefs.getString(DISPLAY_NAME_KEY, "NULL")));
+                displayName));
+    }
+
+    /**
+     * Setup the services required to pay the user for properties owned
+     */
+    private void setupPayServices() {
+        // Create incomeTimer for handling income from properties
+        mIncomeTmrTask = new TimerTask() {
+            @Override
+            public void run() {
+                getIncomeForTime(10000L);
+            }
+        };
+
+        // Start the onGoing timer to get cash!
+        Timer incomeTmr = new Timer();
+        incomeTmr.schedule(mIncomeTmrTask, 10000L, 12000L);
     }
 
     /**
@@ -306,7 +437,11 @@ public class MainActivity extends AppCompatActivity{
                     for (DataSnapshot ds : dataSnapshot.getChildren()) {
                         if (ds.getKey().equalsIgnoreCase(displayName)) {
                             for (DataSnapshot valueObject : ds.getChildren()) {
-                                user_data.add(valueObject.getValue().toString());
+                                // Make sure we are not loading in property names into dashboard as
+                                // we don't need that information in this Activity.
+                                if (!(valueObject.getKey().equalsIgnoreCase("currentProperties"))) {
+                                    user_data.add(valueObject.getValue().toString());
+                                }
                             }
                         }
                     }
@@ -326,26 +461,4 @@ public class MainActivity extends AppCompatActivity{
                     "Remote server error..cannot access database.");
         }
     };
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        mLocationPermissionsGranted = false;
-
-        switch (requestCode) {
-            case LOCATION_PERMISSION_REQUEST_CODE: {
-                if (grantResults.length > 0) {
-                    for (int i = 0; i < grantResults.length; i++) {
-                        if (grantResults[i] != PackageManager.PERMISSION_GRANTED) {
-                            mLocationPermissionsGranted = false;
-                            Log.e(TAG, "onRequestPermissionsResult: Error: Could not get the required permissions..App will not work!");
-                            break;
-                        }
-                    }
-
-                    mLocationPermissionsGranted = true;
-                    // Do nothing rn
-                }
-            }
-        }
-    }
 }

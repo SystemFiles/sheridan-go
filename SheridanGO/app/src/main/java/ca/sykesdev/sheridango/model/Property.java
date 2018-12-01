@@ -1,4 +1,4 @@
-package model;
+package ca.sykesdev.sheridango.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -10,6 +10,7 @@ import android.os.Parcelable;
 public class Property implements Parcelable {
     private String mID, mName, mPhotoID, mType;
     private double mCost, mInvestAmount, mLat, mLong;
+    private double mPercentageOwned, mIncomeBenefits;
 
     /**
      * Creates a property object used in the rest of the app...
@@ -33,6 +34,25 @@ public class Property implements Parcelable {
         this.mLong = mLong;
     }
 
+    /**
+     * Constructor used for personal property listing and handling. We are using only information
+     * that is needed for selling and investing further into existing properties.
+     * @param mID The property ID
+     * @param mName The name of the property
+     * @param mPhotoID The photo ID used to retrieve photo from Google
+     * @param mCost The cost of the property in total (for 100%)
+     * @param mPercentageOwned The percentage owned by this user
+     * @param mIncomeBenefits The income benefits received by this user.
+     */
+    public Property(String mID, String mName, String mPhotoID, double mCost, double mPercentageOwned, double mIncomeBenefits) {
+        this.mID = mID;
+        this.mName = mName;
+        this.mPhotoID = mPhotoID;
+        this.mCost = mCost;
+        this.mPercentageOwned = mPercentageOwned;
+        this.mIncomeBenefits = mIncomeBenefits;
+    }
+
     protected Property(Parcel in) {
         mID = in.readString();
         mName = in.readString();
@@ -42,6 +62,8 @@ public class Property implements Parcelable {
         mInvestAmount = in.readDouble();
         mLat = in.readDouble();
         mLong = in.readDouble();
+        mPercentageOwned = in.readDouble();
+        mIncomeBenefits = in.readDouble();
     }
 
     public static final Creator<Property> CREATOR = new Creator<Property>() {
@@ -96,6 +118,14 @@ public class Property implements Parcelable {
         return mLong;
     }
 
+    public double getmPercentageOwned() {
+        return mPercentageOwned;
+    }
+
+    public double getmIncomeBenefits() {
+        return mIncomeBenefits;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -111,5 +141,7 @@ public class Property implements Parcelable {
         dest.writeDouble(mInvestAmount);
         dest.writeDouble(mLat);
         dest.writeDouble(mLong);
+        dest.writeDouble(mPercentageOwned);
+        dest.writeDouble(mIncomeBenefits);
     }
 }

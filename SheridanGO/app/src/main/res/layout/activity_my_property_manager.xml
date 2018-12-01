@@ -10,7 +10,6 @@
         android:id="@+id/imgPropertyPhoto"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="1dp"
         android:layout_marginBottom="350dp"
         android:contentDescription="@string/places_image_desc_text"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -27,8 +26,8 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="176dp"
         android:layout_marginBottom="308dp"
+        android:text="@string/txt_myprop_name_text"
         android:textSize="22sp"
-        android:text="@string/place_title_default"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,13 +37,13 @@
         android:id="@+id/lblInvest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="29dp"
-        android:layout_marginEnd="300dp"
+        android:layout_marginTop="70dp"
         android:layout_marginBottom="1dp"
         android:text="@string/lbl_invest_more_text"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.03"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtNameOfProperty" />
 
@@ -53,25 +52,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="29dp"
-        android:layout_marginEnd="300dp"
-        android:text="@string/lbl_invest_more_text"
+        android:text="@string/lbl_sell_caption_text"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.03"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtNameOfProperty" />
+        app:layout_constraintTop_toBottomOf="@+id/txtNameOfProperty"
+        app:layout_constraintVertical_bias="0.55" />
 
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="395dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginTop="32dp"
         android:layout_marginBottom="244dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblInvest">
 
@@ -84,7 +83,7 @@
 
         <EditText
             android:id="@+id/txtInvestMorePercent"
-            android:layout_width="70dp"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
@@ -141,7 +140,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="440dp"
-        android:layout_marginTop="435dp"
+        android:layout_marginTop="450dp"
         android:text="@string/txt_cost_text"
         app:layout_constraintBottom_toTopOf="@+id/imgPropertyPhoto"
         app:layout_constraintEnd_toStartOf="@+id/imgPropertyPhoto"
@@ -161,4 +160,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/txtAboutProperty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="@string/txt_income_owned_label_myprop_manager"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtNameOfProperty" />
 </android.support.constraint.ConstraintLayout>

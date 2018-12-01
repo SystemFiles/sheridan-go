@@ -1,7 +1,6 @@
-package model;
+package ca.sykesdev.sheridango.model;
 
 import android.content.Context;
-import android.media.Image;
 import android.util.Log;
 
 import org.json.JSONArray;
@@ -15,7 +14,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-import ca.sykesdev.sheridango.MainActivity;
 import ca.sykesdev.sheridango.R;
 
 public class PlacesHelper {
@@ -143,7 +141,6 @@ public class PlacesHelper {
                     // Get all other information
                     type = place.getJSONArray(PLACE_TYPE).getString(0);
                     try {
-                        // TODO: Keep an eye out for non-existing places exceptions.
                         photoID = place.getJSONArray(PLACE_PHOTOS).getJSONObject(0)
                                 .getString(PLACE_PHOTO_REFERENCE);
                     } catch (JSONException e) {

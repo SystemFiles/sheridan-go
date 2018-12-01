@@ -18,7 +18,7 @@
         <ImageButton
             android:id="@+id/btnMyProperties"
             android:layout_width="48dp"
-            android:layout_height="53dp"
+            android:layout_height="50dp"
             android:layout_weight="1"
             android:contentDescription="@string/default_building_icon_desc"
             app:srcCompat="@drawable/my_properties_button_drawable" />
