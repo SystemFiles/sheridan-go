@@ -1,4 +1,4 @@
-package ca.sykesdev.sheridango.model;
+package ca.sykesdev.sheridango.adapter;
 
 import android.annotation.SuppressLint;
 import android.support.annotation.NonNull;
@@ -15,6 +15,8 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
 import ca.sykesdev.sheridango.R;
+import ca.sykesdev.sheridango.interfaces.ClickListener;
+import ca.sykesdev.sheridango.model.Property;
 
 /**
  * Places Recycler Adapter used for Recycler view on places...

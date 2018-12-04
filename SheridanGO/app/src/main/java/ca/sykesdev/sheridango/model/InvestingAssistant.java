@@ -15,6 +15,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import ca.sykesdev.sheridango.MainActivity;
 import ca.sykesdev.sheridango.ShowPropertiesActivity;
+import ca.sykesdev.sheridango.interfaces.OnWantToExitListener;
 
 public class InvestingAssistant {
 
@@ -276,10 +277,17 @@ public class InvestingAssistant {
                                                     setValue(currentOwnedAmount + investSellAmountPercent);
 
                                             // Update GLOBAL investAmount on property (IF OWNED)
+                                                /* We use propInvestAmountGlobal to determine
+                                                   whether the property is being invested more from
+                                                   the newpropmanager or the mypropmanager */
+                                            double propInvestAmountGlobal = selectedProperty.
+                                                    getmPercentageOwned() == 0 ? selectedProperty.
+                                                    getmInvestAmount() : selectedProperty.
+                                                    getmPercentageOwned();
                                             userReference.getParent().child(MainActivity.PROPERTY_DB_REF_KEY).
                                                     child(selectedProperty.getmID()).
                                                     child(ShowPropertiesActivity.PROPERTY_INVEST_TOTAL_KEY).
-                                                    setValue(selectedProperty.getmPercentageOwned() +
+                                                    setValue(propInvestAmountGlobal +
                                                             investSellAmountPercent);
 
                                             // Get the old benefits

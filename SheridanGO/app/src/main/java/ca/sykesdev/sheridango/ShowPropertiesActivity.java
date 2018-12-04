@@ -30,12 +30,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.security.Permission;
 import java.util.ArrayList;
 
-import ca.sykesdev.sheridango.model.ClickListener;
+import ca.sykesdev.sheridango.interfaces.ClickListener;
 import ca.sykesdev.sheridango.model.PlacesHelper;
-import ca.sykesdev.sheridango.model.PlacesRecyclerAdapter;
+import ca.sykesdev.sheridango.adapter.PlacesRecyclerAdapter;
 import ca.sykesdev.sheridango.model.Property;
 
 public class ShowPropertiesActivity extends AppCompatActivity {

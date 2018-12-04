@@ -18,7 +18,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import ca.sykesdev.sheridango.model.InvestingAssistant;
-import ca.sykesdev.sheridango.model.OnWantToExitListener;
+import ca.sykesdev.sheridango.interfaces.OnWantToExitListener;
 import ca.sykesdev.sheridango.model.PhotoHelper;
 import ca.sykesdev.sheridango.model.Property;
 

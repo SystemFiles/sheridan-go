@@ -18,7 +18,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import ca.sykesdev.sheridango.model.InvestingAssistant;
-import ca.sykesdev.sheridango.model.OnWantToExitListener;
+import ca.sykesdev.sheridango.interfaces.OnWantToExitListener;
 import ca.sykesdev.sheridango.model.PhotoHelper;
 import ca.sykesdev.sheridango.model.Property;
 
@@ -145,7 +145,7 @@ public class NewPropertyManager extends AppCompatActivity {
         String investAmount = txtEnterInvestAmount.getText().toString();
 
         if (Integer.parseInt(investAmount) > (100 - (selectedProperty.getmInvestAmount() * 100))
-                || Integer.parseInt(investAmount) < 0
+                || Integer.parseInt(investAmount) < 1
                 || investAmount.length() == 0) {
             Log.i(TAG, "investInProperty: Invalid input");
             txtEnterInvestAmount.setError("Error: Invalid input.");
