@@ -34,11 +34,16 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyD0EHvl2GqAR8-_GgkkGXdvjLkE6e3_agE" />
 
-        <activity android:name=".ShowPropertiesActivity" />
-        <activity android:name=".MyPropertiesActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".MyPropertyManager" />
-        <activity android:name=".NewPropertyManager"></activity>
+        <activity android:name=".ShowPropertiesActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".MyPropertiesActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".MyPropertyManager"
+            android:screenOrientation="portrait" />
+        <activity android:name=".NewPropertyManager"
+            android:screenOrientation="portrait" />
     </application>
     
 </manifest>
