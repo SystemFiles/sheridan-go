@@ -127,8 +127,8 @@ public class InvestingAssistant {
                                 setValue(globalPropertyOwned - investSellAmountPercent);
 
                         // Update current properties incomeBenefits
-                        double newCashBenefits = calculateCashBenefits((selectedProperty.getmCost()
-                                * userPropOwnedAmount) * (1.0 - investSellAmountPercent));
+                        double newCashBenefits = selectedProperty.getmIncomeBenefits() - (selectedProperty.getmIncomeBenefits() /
+                                ((selectedProperty.getmPercentageOwned() * 100) / (investSellAmountPercent * 100)));
                         userReference.child(displayName).child(MainActivity.USER_MY_PROPERTIES_KEY).
                                 child(selectedProperty.getmName()).child(MainActivity.
                                 USER_PROP_CASH_BENEFITS_AMOUNT).setValue(newCashBenefits);

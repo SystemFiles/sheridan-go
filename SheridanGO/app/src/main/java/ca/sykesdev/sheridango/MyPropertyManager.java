@@ -187,12 +187,12 @@ public class MyPropertyManager extends AppCompatActivity {
                                 sellCashAmount));
 
                         // Update cash benefits amount and Ownership amount
-                        double newBenefits = InvestingAssistant.calculateCashBenefits((selectedProperty.getmCost()
-                                * selectedProperty.getmPercentageOwned()) * (1.0 - (sellAmountEntered / 100)));
+                        double newBenefits = selectedProperty.getmIncomeBenefits() /
+                                ((selectedProperty.getmPercentageOwned() * 100) / sellAmountEntered);
                         txtAboutProperty.setText(String.format(getString(R.string.
                                         txt_income_owned_label_myprop_manager_sell_preview),
                                 selectedProperty.getmPercentageOwned() * 100, sellAmountEntered,
-                                selectedProperty.getmIncomeBenefits(), selectedProperty.getmIncomeBenefits() - newBenefits));
+                                selectedProperty.getmIncomeBenefits(), newBenefits));
                     }
                 } else {
                     setPropertyValues();
