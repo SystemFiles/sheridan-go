@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity{
     private TimerTask mIncomeTmrTask;
     private double mBackgroundPay;
 
-    // firebase DB variables
+    // Firebase DB variables
     private static final FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
     private DatabaseReference mUsersData = mDatabase.getReference(USER_LIST_KEY_PARENT);
     public static DatabaseReference mCurUserDataRef;
@@ -107,12 +107,14 @@ public class MainActivity extends AppCompatActivity{
         } else {
             Log.e(TAG, "onCreate: Fatal error: Application will not work " +
                     "without correct Google Play Services");
+            setResult(RESULT_ERROR);
+            finish();
         }
 
         if (curUserPrefs.getString(DISPLAY_NAME_KEY, "NULL").
                 equalsIgnoreCase("NULL")) {
             Log.e(TAG, "onCreate: Cannot pay for offline time when this " +
-                    "is the first time the user is opening the app!");
+                    "is the first time the user is opening the app! Must create a user account");
         } else {
             // Pay the user for time since they last opened the app
             payForOfflineTime();
