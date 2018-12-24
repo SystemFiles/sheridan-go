@@ -15,6 +15,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import ca.sykesdev.sheridango.MainActivity;
 import ca.sykesdev.sheridango.ShowPropertiesActivity;
+import ca.sykesdev.sheridango.interfaces.OnWantToExitListener;
 
 public class InvestingAssistant {
 
@@ -126,8 +127,8 @@ public class InvestingAssistant {
                                 setValue(globalPropertyOwned - investSellAmountPercent);
 
                         // Update current properties incomeBenefits
-                        double newCashBenefits = calculateCashBenefits((selectedProperty.getmCost()
-                                * userPropOwnedAmount) * (1.0 - investSellAmountPercent));
+                        double newCashBenefits = selectedProperty.getmIncomeBenefits() - (selectedProperty.getmIncomeBenefits() /
+                                ((selectedProperty.getmPercentageOwned() * 100) / (investSellAmountPercent * 100)));
                         userReference.child(displayName).child(MainActivity.USER_MY_PROPERTIES_KEY).
                                 child(selectedProperty.getmName()).child(MainActivity.
                                 USER_PROP_CASH_BENEFITS_AMOUNT).setValue(newCashBenefits);
@@ -276,10 +277,17 @@ public class InvestingAssistant {
                                                     setValue(currentOwnedAmount + investSellAmountPercent);
 
                                             // Update GLOBAL investAmount on property (IF OWNED)
+                                                /* We use propInvestAmountGlobal to determine
+                                                   whether the property is being invested more from
+                                                   the newpropmanager or the mypropmanager */
+                                            double propInvestAmountGlobal = selectedProperty.
+                                                    getmPercentageOwned() == 0 ? selectedProperty.
+                                                    getmInvestAmount() : selectedProperty.
+                                                    getmPercentageOwned();
                                             userReference.getParent().child(MainActivity.PROPERTY_DB_REF_KEY).
                                                     child(selectedProperty.getmID()).
                                                     child(ShowPropertiesActivity.PROPERTY_INVEST_TOTAL_KEY).
-                                                    setValue(selectedProperty.getmPercentageOwned() +
+                                                    setValue(propInvestAmountGlobal +
                                                             investSellAmountPercent);
 
                                             // Get the old benefits

@@ -1,0 +1,495 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml:2:1-49:12
+INJECTED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml:2:1-49:12
+INJECTED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml:2:1-49:12
+INJECTED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml:2:1-49:12
+MERGED from [com.android.support:appcompat-v7:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/17a3cf9681246c4d696c483b8b1420ee/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.3.aar/55bd680bc009653fac604abf2dd5c2d9/AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.support:multidex:1.0.3] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/multidex-1.0.3.aar/bb302838bd2e69c47e8d68b15f5160ff/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:recyclerview-v7:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-28.0.0.aar/186b6b1092c365994fe8008a4324cf05/AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.firebase:firebase-core:16.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-core-16.0.1.aar/24f4370cd20f2df95870f68df844433e/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.firebase:firebase-database:16.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-database-16.0.1.aar/af1cbf81c63321b7fd93d4fbbd6138f4/AndroidManifest.xml:2:1-8:12
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-28.0.0.aar/df08b29d8fb487323e37c936cfcaee4f/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-28.0.0.aar/5a2d6508570f4a8d19002c3298915e36/AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.firebase:firebase-measurement-connector-impl:16.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-measurement-connector-impl-16.0.1.aar/14fa0aed3144ab8f9f44c39f1d20d8ef/AndroidManifest.xml:17:1-34:12
+MERGED from [com.google.firebase:firebase-analytics:16.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-analytics-16.0.1.aar/36be061aa8f161bf6ae90eec66a242a7/AndroidManifest.xml:17:1-55:12
+MERGED from [com.google.firebase:firebase-database-connection:16.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-database-connection-16.0.1.aar/e5c0cff6dee05ad82b30893f96310187/AndroidManifest.xml:2:1-10:12
+MERGED from [com.google.firebase:firebase-analytics-impl:16.1.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-16.1.1.aar/f16bc2f465e8fc68e6408413254767fe/AndroidManifest.xml:17:1-40:12
+MERGED from [com.google.firebase:firebase-iid:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-iid-16.0.0.aar/fc21342ce757f40c894af5ca83a8d5c2/AndroidManifest.xml:17:1-65:12
+MERGED from [com.google.firebase:firebase-common:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-common-16.0.0.aar/264e2f1b8cff86d1217a521e799bd107/AndroidManifest.xml:2:1-16:12
+MERGED from [com.google.firebase:firebase-iid-interop:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-iid-interop-16.0.0.aar/28b6269cf078570dc09d1e2d39d625d3/AndroidManifest.xml:2:1-10:12
+MERGED from [com.google.android.gms:play-services-base:15.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/play-services-base-15.0.1.aar/d1729ee360d01b5313cdca009ee2c0cb/AndroidManifest.xml:17:1-29:12
+MERGED from [com.google.android.gms:play-services-tasks:15.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/play-services-tasks-15.0.1.aar/a1f061043858e3d1927b6b5f1cdcd4f4/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.firebase:firebase-database-collection:15.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-database-collection-15.0.1.aar/cdc1b66a3aae04ffa9a53f4ce1db0c41/AndroidManifest.xml:2:1-8:12
+MERGED from [com.google.android.gms:play-services-stats:15.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/play-services-stats-15.0.1.aar/2e483e059824df16a95140fda88e9748/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.firebase:firebase-measurement-connector:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-measurement-connector-16.0.0.aar/8831ae71987e543bdf04fe2fd34e950c/AndroidManifest.xml:17:1-25:12
+MERGED from [com.google.android.gms:play-services-ads-identifier:15.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/play-services-ads-identifier-15.0.1.aar/57b99bb99ff352785fcd97283ffd40ce/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.gms:play-services-basement:15.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/play-services-basement-15.0.1.aar/ac499796ab6f80aa72d9563140944bdf/AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:support-v4:26.1.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/176242c7549dc8f69328e75669e85a2a/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-media-compat:26.1.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/afa1e137bd5b2d9b9371aa9e61783ce5/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-fragment:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/support-fragment-28.0.0.aar/7fd29b9cb82a40996a67e03a0297c3d8/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/support-core-ui-28.0.0.aar/6fa92be38e14afd68c60a614e2ec8d9a/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/support-core-utils-28.0.0.aar/4f463cefda67dfd500a25548f5ad9c96/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:loader:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/loader-28.0.0.aar/7e5fead44f943ac7abb97ea56b748196/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:viewpager:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/viewpager-28.0.0.aar/2dc020a1c52e83a223a5bec0e2213339/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:coordinatorlayout:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/coordinatorlayout-28.0.0.aar/9b00cf7985267b217485ff2929b2a0e2/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:drawerlayout:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/drawerlayout-28.0.0.aar/08e86b9093cbb2ebebc7a8abc546d33f/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:slidingpanelayout:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/slidingpanelayout-28.0.0.aar/363567869069b6cfc55cb6a3caae845d/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:customview:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/customview-28.0.0.aar/ace50a0281e52b810128ad9dd44561d6/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/swiperefreshlayout-28.0.0.aar/b4a7df0d318a935d3edc093ba6678933/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/asynclayoutinflater-28.0.0.aar/664b172919813bcdc3e7c44b4e14e661/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/d4617f232d7e6880e077fd2cf40a0934/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/versionedparcelable-28.0.0.aar/a8c246dc1ee988cc0851bd15de62fffa/AndroidManifest.xml:17:1-25:12
+MERGED from [com.android.support:cursoradapter:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/cursoradapter-28.0.0.aar/32c524298b53dcb690263868539fbc6e/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.1.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/da8c0361075f8788a3198ee042c66285/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata:1.1.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/livedata-1.1.1.aar/f85625f16a697410f95f7162f5581ce0/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.1.aar/d716cc9f4cdbb49972e04f32a28cd544/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/56aa2b6e2301b02da763f8cc8bd113eb/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:documentfile:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/documentfile-28.0.0.aar/233535c4e5592f5cbf4e31b03de63736/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/localbroadcastmanager-28.0.0.aar/e01cc80f25c6047ef5dcd26c2fd60502/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:print:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/print-28.0.0.aar/658a1cf680c929ae4aee41b4cd5f7b13/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.1.aar/cd20b7d16cdc27673b944fbe32f2e50c/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:interpolator:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/interpolator-28.0.0.aar/714bf915b385880063678caf53a735b7/AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.android.gms:play-services-measurement-base:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/play-services-measurement-base-16.0.0.aar/569458bdeb1dd7fb3f1c77ee34d37b34/AndroidManifest.xml:17:1-24:12
+INJECTED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml:2:1-49:12
+INJECTED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml:2:1-49:12
+INJECTED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml:2:1-49:12
+	package
+		ADDED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml:3:5-37
+		INJECTED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml
+		ADDED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml:2:1-49:12
+		INJECTED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml
+		ADDED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml:2:1-49:12
+		INJECTED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml:2:11-69
+uses-permission#android.permission.INTERNET
+ADDED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml:5:5-67
+MERGED from [com.google.firebase:firebase-measurement-connector-impl:16.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-measurement-connector-impl-16.0.1.aar/14fa0aed3144ab8f9f44c39f1d20d8ef/AndroidManifest.xml:22:5-67
+MERGED from [com.google.firebase:firebase-measurement-connector-impl:16.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-measurement-connector-impl-16.0.1.aar/14fa0aed3144ab8f9f44c39f1d20d8ef/AndroidManifest.xml:22:5-67
+MERGED from [com.google.firebase:firebase-analytics:16.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-analytics-16.0.1.aar/36be061aa8f161bf6ae90eec66a242a7/AndroidManifest.xml:23:5-67
+MERGED from [com.google.firebase:firebase-analytics:16.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-analytics-16.0.1.aar/36be061aa8f161bf6ae90eec66a242a7/AndroidManifest.xml:23:5-67
+MERGED from [com.google.firebase:firebase-database-connection:16.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-database-connection-16.0.1.aar/e5c0cff6dee05ad82b30893f96310187/AndroidManifest.xml:8:5-67
+MERGED from [com.google.firebase:firebase-database-connection:16.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-database-connection-16.0.1.aar/e5c0cff6dee05ad82b30893f96310187/AndroidManifest.xml:8:5-67
+MERGED from [com.google.firebase:firebase-analytics-impl:16.1.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-16.1.1.aar/f16bc2f465e8fc68e6408413254767fe/AndroidManifest.xml:23:5-67
+MERGED from [com.google.firebase:firebase-analytics-impl:16.1.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-16.1.1.aar/f16bc2f465e8fc68e6408413254767fe/AndroidManifest.xml:23:5-67
+MERGED from [com.google.firebase:firebase-iid:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-iid-16.0.0.aar/fc21342ce757f40c894af5ca83a8d5c2/AndroidManifest.xml:23:5-67
+MERGED from [com.google.firebase:firebase-iid:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-iid-16.0.0.aar/fc21342ce757f40c894af5ca83a8d5c2/AndroidManifest.xml:23:5-67
+	android:name
+		ADDED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml:5:22-64
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml:6:5-81
+	android:name
+		ADDED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml:6:22-78
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml:7:5-79
+	android:name
+		ADDED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml:7:22-76
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml:8:5-79
+MERGED from [com.google.firebase:firebase-measurement-connector-impl:16.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-measurement-connector-impl-16.0.1.aar/14fa0aed3144ab8f9f44c39f1d20d8ef/AndroidManifest.xml:23:5-79
+MERGED from [com.google.firebase:firebase-measurement-connector-impl:16.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-measurement-connector-impl-16.0.1.aar/14fa0aed3144ab8f9f44c39f1d20d8ef/AndroidManifest.xml:23:5-79
+MERGED from [com.google.firebase:firebase-analytics:16.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-analytics-16.0.1.aar/36be061aa8f161bf6ae90eec66a242a7/AndroidManifest.xml:24:5-79
+MERGED from [com.google.firebase:firebase-analytics:16.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-analytics-16.0.1.aar/36be061aa8f161bf6ae90eec66a242a7/AndroidManifest.xml:24:5-79
+MERGED from [com.google.firebase:firebase-analytics-impl:16.1.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-16.1.1.aar/f16bc2f465e8fc68e6408413254767fe/AndroidManifest.xml:24:5-79
+MERGED from [com.google.firebase:firebase-analytics-impl:16.1.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-16.1.1.aar/f16bc2f465e8fc68e6408413254767fe/AndroidManifest.xml:24:5-79
+MERGED from [com.google.firebase:firebase-iid:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-iid-16.0.0.aar/fc21342ce757f40c894af5ca83a8d5c2/AndroidManifest.xml:22:5-79
+MERGED from [com.google.firebase:firebase-iid:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-iid-16.0.0.aar/fc21342ce757f40c894af5ca83a8d5c2/AndroidManifest.xml:22:5-79
+	android:name
+		ADDED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml:8:22-76
+application
+ADDED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml:10:5-47:19
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.3.aar/55bd680bc009653fac604abf2dd5c2d9/AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.3.aar/55bd680bc009653fac604abf2dd5c2d9/AndroidManifest.xml:9:5-20
+MERGED from [com.google.firebase:firebase-core:16.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-core-16.0.1.aar/24f4370cd20f2df95870f68df844433e/AndroidManifest.xml:7:5-20
+MERGED from [com.google.firebase:firebase-core:16.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-core-16.0.1.aar/24f4370cd20f2df95870f68df844433e/AndroidManifest.xml:7:5-20
+MERGED from [com.google.firebase:firebase-measurement-connector-impl:16.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-measurement-connector-impl-16.0.1.aar/14fa0aed3144ab8f9f44c39f1d20d8ef/AndroidManifest.xml:26:5-32:19
+MERGED from [com.google.firebase:firebase-measurement-connector-impl:16.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-measurement-connector-impl-16.0.1.aar/14fa0aed3144ab8f9f44c39f1d20d8ef/AndroidManifest.xml:26:5-32:19
+MERGED from [com.google.firebase:firebase-analytics:16.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-analytics-16.0.1.aar/36be061aa8f161bf6ae90eec66a242a7/AndroidManifest.xml:28:5-53:19
+MERGED from [com.google.firebase:firebase-analytics:16.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-analytics-16.0.1.aar/36be061aa8f161bf6ae90eec66a242a7/AndroidManifest.xml:28:5-53:19
+MERGED from [com.google.firebase:firebase-analytics-impl:16.1.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-16.1.1.aar/f16bc2f465e8fc68e6408413254767fe/AndroidManifest.xml:28:5-38:19
+MERGED from [com.google.firebase:firebase-analytics-impl:16.1.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-16.1.1.aar/f16bc2f465e8fc68e6408413254767fe/AndroidManifest.xml:28:5-38:19
+MERGED from [com.google.firebase:firebase-iid:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-iid-16.0.0.aar/fc21342ce757f40c894af5ca83a8d5c2/AndroidManifest.xml:34:5-63:19
+MERGED from [com.google.firebase:firebase-iid:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-iid-16.0.0.aar/fc21342ce757f40c894af5ca83a8d5c2/AndroidManifest.xml:34:5-63:19
+MERGED from [com.google.firebase:firebase-common:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-common-16.0.0.aar/264e2f1b8cff86d1217a521e799bd107/AndroidManifest.xml:8:5-14:19
+MERGED from [com.google.firebase:firebase-common:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-common-16.0.0.aar/264e2f1b8cff86d1217a521e799bd107/AndroidManifest.xml:8:5-14:19
+MERGED from [com.google.firebase:firebase-iid-interop:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-iid-interop-16.0.0.aar/28b6269cf078570dc09d1e2d39d625d3/AndroidManifest.xml:7:5-8:19
+MERGED from [com.google.firebase:firebase-iid-interop:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-iid-interop-16.0.0.aar/28b6269cf078570dc09d1e2d39d625d3/AndroidManifest.xml:7:5-8:19
+MERGED from [com.google.android.gms:play-services-base:15.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/play-services-base-15.0.1.aar/d1729ee360d01b5313cdca009ee2c0cb/AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.android.gms:play-services-base:15.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/play-services-base-15.0.1.aar/d1729ee360d01b5313cdca009ee2c0cb/AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.android.gms:play-services-tasks:15.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/play-services-tasks-15.0.1.aar/a1f061043858e3d1927b6b5f1cdcd4f4/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-tasks:15.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/play-services-tasks-15.0.1.aar/a1f061043858e3d1927b6b5f1cdcd4f4/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-stats:15.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/play-services-stats-15.0.1.aar/2e483e059824df16a95140fda88e9748/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-stats:15.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/play-services-stats-15.0.1.aar/2e483e059824df16a95140fda88e9748/AndroidManifest.xml:7:5-20
+MERGED from [com.google.firebase:firebase-measurement-connector:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-measurement-connector-16.0.0.aar/8831ae71987e543bdf04fe2fd34e950c/AndroidManifest.xml:22:5-23:19
+MERGED from [com.google.firebase:firebase-measurement-connector:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-measurement-connector-16.0.0.aar/8831ae71987e543bdf04fe2fd34e950c/AndroidManifest.xml:22:5-23:19
+MERGED from [com.google.android.gms:play-services-ads-identifier:15.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/play-services-ads-identifier-15.0.1.aar/57b99bb99ff352785fcd97283ffd40ce/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-ads-identifier:15.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/play-services-ads-identifier-15.0.1.aar/57b99bb99ff352785fcd97283ffd40ce/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-basement:15.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/play-services-basement-15.0.1.aar/ac499796ab6f80aa72d9563140944bdf/AndroidManifest.xml:22:5-26:19
+MERGED from [com.google.android.gms:play-services-basement:15.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/play-services-basement-15.0.1.aar/ac499796ab6f80aa72d9563140944bdf/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-v4:26.1.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/176242c7549dc8f69328e75669e85a2a/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-v4:26.1.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/176242c7549dc8f69328e75669e85a2a/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-media-compat:26.1.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/afa1e137bd5b2d9b9371aa9e61783ce5/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-media-compat:26.1.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/afa1e137bd5b2d9b9371aa9e61783ce5/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-compat:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/d4617f232d7e6880e077fd2cf40a0934/AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:support-compat:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/d4617f232d7e6880e077fd2cf40a0934/AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/versionedparcelable-28.0.0.aar/a8c246dc1ee988cc0851bd15de62fffa/AndroidManifest.xml:22:5-23:19
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/versionedparcelable-28.0.0.aar/a8c246dc1ee988cc0851bd15de62fffa/AndroidManifest.xml:22:5-23:19
+MERGED from [com.google.android.gms:play-services-measurement-base:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/play-services-measurement-base-16.0.0.aar/569458bdeb1dd7fb3f1c77ee34d37b34/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-measurement-base:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/play-services-measurement-base-16.0.0.aar/569458bdeb1dd7fb3f1c77ee34d37b34/AndroidManifest.xml:22:5-20
+	android:appComponentFactory
+		ADDED from [com.android.support:support-compat:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/d4617f232d7e6880e077fd2cf40a0934/AndroidManifest.xml:22:18-91
+	android:supportsRtl
+		ADDED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml:16:9-35
+	android:label
+		ADDED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml:14:9-41
+	android:roundIcon
+		ADDED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml:15:9-50
+	android:icon
+		ADDED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml:13:9-45
+	android:allowBackup
+		ADDED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml:12:9-35
+	android:theme
+		ADDED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml:17:9-65
+activity#ca.sykesdev.sheridango.MainActivity
+ADDED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml:19:9-25:20
+	android:name
+		ADDED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml:19:19-47
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml:20:13-24:29
+action#android.intent.action.MAIN
+ADDED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml:21:17-69
+	android:name
+		ADDED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml:21:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml:23:17-77
+	android:name
+		ADDED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml:23:27-74
+meta-data#com.google.android.gms.version
+ADDED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml:28:9-30:69
+MERGED from [com.google.android.gms:play-services-basement:15.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/play-services-basement-15.0.1.aar/ac499796ab6f80aa72d9563140944bdf/AndroidManifest.xml:23:9-25:69
+MERGED from [com.google.android.gms:play-services-basement:15.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/play-services-basement-15.0.1.aar/ac499796ab6f80aa72d9563140944bdf/AndroidManifest.xml:23:9-25:69
+	android:value
+		ADDED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml:30:13-66
+	android:name
+		ADDED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml:29:13-58
+meta-data#com.google.android.geo.API_KEY
+ADDED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml:33:9-35:71
+	android:value
+		ADDED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml:35:13-68
+	android:name
+		ADDED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml:34:13-58
+activity#ca.sykesdev.sheridango.ShowPropertiesActivity
+ADDED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml:37:9-38:52
+	android:screenOrientation
+		ADDED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml:38:13-49
+	android:name
+		ADDED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml:37:19-57
+activity#ca.sykesdev.sheridango.MyPropertiesActivity
+ADDED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml:39:9-40:52
+	android:screenOrientation
+		ADDED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml:40:13-49
+	android:name
+		ADDED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml:39:19-55
+activity#ca.sykesdev.sheridango.LoginActivity
+ADDED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml:41:9-42:52
+	android:screenOrientation
+		ADDED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml:42:13-49
+	android:name
+		ADDED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml:41:19-48
+activity#ca.sykesdev.sheridango.MyPropertyManager
+ADDED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml:43:9-44:52
+	android:screenOrientation
+		ADDED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml:44:13-49
+	android:name
+		ADDED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml:43:19-52
+activity#ca.sykesdev.sheridango.NewPropertyManager
+ADDED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml:45:9-46:52
+	android:screenOrientation
+		ADDED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml:46:13-49
+	android:name
+		ADDED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml:45:19-53
+uses-sdk
+INJECTED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml
+INJECTED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml
+MERGED from [com.android.support:appcompat-v7:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/17a3cf9681246c4d696c483b8b1420ee/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/17a3cf9681246c4d696c483b8b1420ee/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.3.aar/55bd680bc009653fac604abf2dd5c2d9/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.3.aar/55bd680bc009653fac604abf2dd5c2d9/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:multidex:1.0.3] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/multidex-1.0.3.aar/bb302838bd2e69c47e8d68b15f5160ff/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:multidex:1.0.3] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/multidex-1.0.3.aar/bb302838bd2e69c47e8d68b15f5160ff/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:recyclerview-v7:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-28.0.0.aar/186b6b1092c365994fe8008a4324cf05/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-28.0.0.aar/186b6b1092c365994fe8008a4324cf05/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-core:16.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-core-16.0.1.aar/24f4370cd20f2df95870f68df844433e/AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-core:16.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-core-16.0.1.aar/24f4370cd20f2df95870f68df844433e/AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-database:16.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-database-16.0.1.aar/af1cbf81c63321b7fd93d4fbbd6138f4/AndroidManifest.xml:6:5-44
+MERGED from [com.google.firebase:firebase-database:16.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-database-16.0.1.aar/af1cbf81c63321b7fd93d4fbbd6138f4/AndroidManifest.xml:6:5-44
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-28.0.0.aar/df08b29d8fb487323e37c936cfcaee4f/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-28.0.0.aar/df08b29d8fb487323e37c936cfcaee4f/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-28.0.0.aar/5a2d6508570f4a8d19002c3298915e36/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-28.0.0.aar/5a2d6508570f4a8d19002c3298915e36/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-measurement-connector-impl:16.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-measurement-connector-impl-16.0.1.aar/14fa0aed3144ab8f9f44c39f1d20d8ef/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-measurement-connector-impl:16.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-measurement-connector-impl-16.0.1.aar/14fa0aed3144ab8f9f44c39f1d20d8ef/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-analytics:16.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-analytics-16.0.1.aar/36be061aa8f161bf6ae90eec66a242a7/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-analytics:16.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-analytics-16.0.1.aar/36be061aa8f161bf6ae90eec66a242a7/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-database-connection:16.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-database-connection-16.0.1.aar/e5c0cff6dee05ad82b30893f96310187/AndroidManifest.xml:6:5-44
+MERGED from [com.google.firebase:firebase-database-connection:16.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-database-connection-16.0.1.aar/e5c0cff6dee05ad82b30893f96310187/AndroidManifest.xml:6:5-44
+MERGED from [com.google.firebase:firebase-analytics-impl:16.1.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-16.1.1.aar/f16bc2f465e8fc68e6408413254767fe/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-analytics-impl:16.1.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-16.1.1.aar/f16bc2f465e8fc68e6408413254767fe/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-iid:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-iid-16.0.0.aar/fc21342ce757f40c894af5ca83a8d5c2/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-iid:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-iid-16.0.0.aar/fc21342ce757f40c894af5ca83a8d5c2/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-common:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-common-16.0.0.aar/264e2f1b8cff86d1217a521e799bd107/AndroidManifest.xml:5:5-6:37
+MERGED from [com.google.firebase:firebase-common:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-common-16.0.0.aar/264e2f1b8cff86d1217a521e799bd107/AndroidManifest.xml:5:5-6:37
+MERGED from [com.google.firebase:firebase-iid-interop:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-iid-interop-16.0.0.aar/28b6269cf078570dc09d1e2d39d625d3/AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-iid-interop:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-iid-interop-16.0.0.aar/28b6269cf078570dc09d1e2d39d625d3/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-base:15.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/play-services-base-15.0.1.aar/d1729ee360d01b5313cdca009ee2c0cb/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-base:15.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/play-services-base-15.0.1.aar/d1729ee360d01b5313cdca009ee2c0cb/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-tasks:15.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/play-services-tasks-15.0.1.aar/a1f061043858e3d1927b6b5f1cdcd4f4/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-tasks:15.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/play-services-tasks-15.0.1.aar/a1f061043858e3d1927b6b5f1cdcd4f4/AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-database-collection:15.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-database-collection-15.0.1.aar/cdc1b66a3aae04ffa9a53f4ce1db0c41/AndroidManifest.xml:6:5-44
+MERGED from [com.google.firebase:firebase-database-collection:15.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-database-collection-15.0.1.aar/cdc1b66a3aae04ffa9a53f4ce1db0c41/AndroidManifest.xml:6:5-44
+MERGED from [com.google.android.gms:play-services-stats:15.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/play-services-stats-15.0.1.aar/2e483e059824df16a95140fda88e9748/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-stats:15.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/play-services-stats-15.0.1.aar/2e483e059824df16a95140fda88e9748/AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-measurement-connector:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-measurement-connector-16.0.0.aar/8831ae71987e543bdf04fe2fd34e950c/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-measurement-connector:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-measurement-connector-16.0.0.aar/8831ae71987e543bdf04fe2fd34e950c/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-ads-identifier:15.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/play-services-ads-identifier-15.0.1.aar/57b99bb99ff352785fcd97283ffd40ce/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-ads-identifier:15.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/play-services-ads-identifier-15.0.1.aar/57b99bb99ff352785fcd97283ffd40ce/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-basement:15.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/play-services-basement-15.0.1.aar/ac499796ab6f80aa72d9563140944bdf/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-basement:15.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/play-services-basement-15.0.1.aar/ac499796ab6f80aa72d9563140944bdf/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:26.1.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/176242c7549dc8f69328e75669e85a2a/AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-v4:26.1.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/176242c7549dc8f69328e75669e85a2a/AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-media-compat:26.1.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/afa1e137bd5b2d9b9371aa9e61783ce5/AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-media-compat:26.1.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/afa1e137bd5b2d9b9371aa9e61783ce5/AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-fragment:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/support-fragment-28.0.0.aar/7fd29b9cb82a40996a67e03a0297c3d8/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/support-fragment-28.0.0.aar/7fd29b9cb82a40996a67e03a0297c3d8/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/support-core-ui-28.0.0.aar/6fa92be38e14afd68c60a614e2ec8d9a/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/support-core-ui-28.0.0.aar/6fa92be38e14afd68c60a614e2ec8d9a/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/support-core-utils-28.0.0.aar/4f463cefda67dfd500a25548f5ad9c96/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/support-core-utils-28.0.0.aar/4f463cefda67dfd500a25548f5ad9c96/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:loader:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/loader-28.0.0.aar/7e5fead44f943ac7abb97ea56b748196/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:loader:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/loader-28.0.0.aar/7e5fead44f943ac7abb97ea56b748196/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:viewpager:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/viewpager-28.0.0.aar/2dc020a1c52e83a223a5bec0e2213339/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:viewpager:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/viewpager-28.0.0.aar/2dc020a1c52e83a223a5bec0e2213339/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/coordinatorlayout-28.0.0.aar/9b00cf7985267b217485ff2929b2a0e2/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/coordinatorlayout-28.0.0.aar/9b00cf7985267b217485ff2929b2a0e2/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/drawerlayout-28.0.0.aar/08e86b9093cbb2ebebc7a8abc546d33f/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/drawerlayout-28.0.0.aar/08e86b9093cbb2ebebc7a8abc546d33f/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/slidingpanelayout-28.0.0.aar/363567869069b6cfc55cb6a3caae845d/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/slidingpanelayout-28.0.0.aar/363567869069b6cfc55cb6a3caae845d/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customview:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/customview-28.0.0.aar/ace50a0281e52b810128ad9dd44561d6/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customview:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/customview-28.0.0.aar/ace50a0281e52b810128ad9dd44561d6/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/swiperefreshlayout-28.0.0.aar/b4a7df0d318a935d3edc093ba6678933/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/swiperefreshlayout-28.0.0.aar/b4a7df0d318a935d3edc093ba6678933/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/asynclayoutinflater-28.0.0.aar/664b172919813bcdc3e7c44b4e14e661/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/asynclayoutinflater-28.0.0.aar/664b172919813bcdc3e7c44b4e14e661/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/d4617f232d7e6880e077fd2cf40a0934/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/d4617f232d7e6880e077fd2cf40a0934/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/versionedparcelable-28.0.0.aar/a8c246dc1ee988cc0851bd15de62fffa/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/versionedparcelable-28.0.0.aar/a8c246dc1ee988cc0851bd15de62fffa/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/cursoradapter-28.0.0.aar/32c524298b53dcb690263868539fbc6e/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/cursoradapter-28.0.0.aar/32c524298b53dcb690263868539fbc6e/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/da8c0361075f8788a3198ee042c66285/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/da8c0361075f8788a3198ee042c66285/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/livedata-1.1.1.aar/f85625f16a697410f95f7162f5581ce0/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/livedata-1.1.1.aar/f85625f16a697410f95f7162f5581ce0/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.1.aar/d716cc9f4cdbb49972e04f32a28cd544/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.1.aar/d716cc9f4cdbb49972e04f32a28cd544/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/56aa2b6e2301b02da763f8cc8bd113eb/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/56aa2b6e2301b02da763f8cc8bd113eb/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:documentfile:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/documentfile-28.0.0.aar/233535c4e5592f5cbf4e31b03de63736/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:documentfile:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/documentfile-28.0.0.aar/233535c4e5592f5cbf4e31b03de63736/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/localbroadcastmanager-28.0.0.aar/e01cc80f25c6047ef5dcd26c2fd60502/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/localbroadcastmanager-28.0.0.aar/e01cc80f25c6047ef5dcd26c2fd60502/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:print:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/print-28.0.0.aar/658a1cf680c929ae4aee41b4cd5f7b13/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:print:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/print-28.0.0.aar/658a1cf680c929ae4aee41b4cd5f7b13/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.1.aar/cd20b7d16cdc27673b944fbe32f2e50c/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.1.aar/cd20b7d16cdc27673b944fbe32f2e50c/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/interpolator-28.0.0.aar/714bf915b385880063678caf53a735b7/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/interpolator-28.0.0.aar/714bf915b385880063678caf53a735b7/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-measurement-base:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/play-services-measurement-base-16.0.0.aar/569458bdeb1dd7fb3f1c77ee34d37b34/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-measurement-base:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/play-services-measurement-base-16.0.0.aar/569458bdeb1dd7fb3f1c77ee34d37b34/AndroidManifest.xml:20:5-44
+INJECTED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml
+INJECTED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml
+	tools:overrideLibrary
+		ADDED from [com.android.support:support-v4:26.1.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/176242c7549dc8f69328e75669e85a2a/AndroidManifest.xml:23:9-51
+	android:targetSdkVersion
+		INJECTED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml
+		ADDED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml
+		ADDED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/bensykes/Nextcloud/Sem3Courses/PROG/Group Assignment/sheridan-go/SheridanGO/app/src/main/AndroidManifest.xml
+uses-permission#android.permission.WAKE_LOCK
+ADDED from [com.google.firebase:firebase-measurement-connector-impl:16.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-measurement-connector-impl-16.0.1.aar/14fa0aed3144ab8f9f44c39f1d20d8ef/AndroidManifest.xml:24:5-68
+MERGED from [com.google.firebase:firebase-analytics:16.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-analytics-16.0.1.aar/36be061aa8f161bf6ae90eec66a242a7/AndroidManifest.xml:25:5-68
+MERGED from [com.google.firebase:firebase-analytics:16.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-analytics-16.0.1.aar/36be061aa8f161bf6ae90eec66a242a7/AndroidManifest.xml:25:5-68
+MERGED from [com.google.firebase:firebase-analytics-impl:16.1.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-16.1.1.aar/f16bc2f465e8fc68e6408413254767fe/AndroidManifest.xml:25:5-68
+MERGED from [com.google.firebase:firebase-analytics-impl:16.1.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-16.1.1.aar/f16bc2f465e8fc68e6408413254767fe/AndroidManifest.xml:25:5-68
+MERGED from [com.google.firebase:firebase-iid:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-iid-16.0.0.aar/fc21342ce757f40c894af5ca83a8d5c2/AndroidManifest.xml:24:5-68
+MERGED from [com.google.firebase:firebase-iid:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-iid-16.0.0.aar/fc21342ce757f40c894af5ca83a8d5c2/AndroidManifest.xml:24:5-68
+	android:name
+		ADDED from [com.google.firebase:firebase-measurement-connector-impl:16.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-measurement-connector-impl-16.0.1.aar/14fa0aed3144ab8f9f44c39f1d20d8ef/AndroidManifest.xml:24:22-65
+service#com.google.firebase.components.ComponentDiscoveryService
+ADDED from [com.google.firebase:firebase-measurement-connector-impl:16.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-measurement-connector-impl-16.0.1.aar/14fa0aed3144ab8f9f44c39f1d20d8ef/AndroidManifest.xml:27:9-31:19
+MERGED from [com.google.firebase:firebase-iid:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-iid-16.0.0.aar/fc21342ce757f40c894af5ca83a8d5c2/AndroidManifest.xml:35:9-39:19
+MERGED from [com.google.firebase:firebase-iid:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-iid-16.0.0.aar/fc21342ce757f40c894af5ca83a8d5c2/AndroidManifest.xml:35:9-39:19
+	android:name
+		ADDED from [com.google.firebase:firebase-measurement-connector-impl:16.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-measurement-connector-impl-16.0.1.aar/14fa0aed3144ab8f9f44c39f1d20d8ef/AndroidManifest.xml:27:18-89
+meta-data#com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar
+ADDED from [com.google.firebase:firebase-measurement-connector-impl:16.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-measurement-connector-impl-16.0.1.aar/14fa0aed3144ab8f9f44c39f1d20d8ef/AndroidManifest.xml:28:13-30:85
+	android:value
+		ADDED from [com.google.firebase:firebase-measurement-connector-impl:16.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-measurement-connector-impl-16.0.1.aar/14fa0aed3144ab8f9f44c39f1d20d8ef/AndroidManifest.xml:30:17-82
+	android:name
+		ADDED from [com.google.firebase:firebase-measurement-connector-impl:16.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-measurement-connector-impl-16.0.1.aar/14fa0aed3144ab8f9f44c39f1d20d8ef/AndroidManifest.xml:29:17-139
+uses-permission#com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE
+ADDED from [com.google.firebase:firebase-analytics:16.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-analytics-16.0.1.aar/36be061aa8f161bf6ae90eec66a242a7/AndroidManifest.xml:26:5-110
+MERGED from [com.google.firebase:firebase-analytics-impl:16.1.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-16.1.1.aar/f16bc2f465e8fc68e6408413254767fe/AndroidManifest.xml:26:5-110
+MERGED from [com.google.firebase:firebase-analytics-impl:16.1.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-16.1.1.aar/f16bc2f465e8fc68e6408413254767fe/AndroidManifest.xml:26:5-110
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:16.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-analytics-16.0.1.aar/36be061aa8f161bf6ae90eec66a242a7/AndroidManifest.xml:26:22-107
+receiver#com.google.android.gms.measurement.AppMeasurementReceiver
+ADDED from [com.google.firebase:firebase-analytics:16.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-analytics-16.0.1.aar/36be061aa8f161bf6ae90eec66a242a7/AndroidManifest.xml:29:9-33:20
+	android:enabled
+		ADDED from [com.google.firebase:firebase-analytics:16.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-analytics-16.0.1.aar/36be061aa8f161bf6ae90eec66a242a7/AndroidManifest.xml:31:13-35
+	android:exported
+		ADDED from [com.google.firebase:firebase-analytics:16.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-analytics-16.0.1.aar/36be061aa8f161bf6ae90eec66a242a7/AndroidManifest.xml:32:13-37
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:16.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-analytics-16.0.1.aar/36be061aa8f161bf6ae90eec66a242a7/AndroidManifest.xml:30:13-85
+receiver#com.google.android.gms.measurement.AppMeasurementInstallReferrerReceiver
+ADDED from [com.google.firebase:firebase-analytics:16.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-analytics-16.0.1.aar/36be061aa8f161bf6ae90eec66a242a7/AndroidManifest.xml:34:9-42:20
+MERGED from [com.google.firebase:firebase-analytics-impl:16.1.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-16.1.1.aar/f16bc2f465e8fc68e6408413254767fe/AndroidManifest.xml:29:9-37:20
+MERGED from [com.google.firebase:firebase-analytics-impl:16.1.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-16.1.1.aar/f16bc2f465e8fc68e6408413254767fe/AndroidManifest.xml:29:9-37:20
+	android:enabled
+		ADDED from [com.google.firebase:firebase-analytics:16.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-analytics-16.0.1.aar/36be061aa8f161bf6ae90eec66a242a7/AndroidManifest.xml:36:13-35
+	android:exported
+		ADDED from [com.google.firebase:firebase-analytics:16.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-analytics-16.0.1.aar/36be061aa8f161bf6ae90eec66a242a7/AndroidManifest.xml:37:13-36
+	android:permission
+		ADDED from [com.google.firebase:firebase-analytics:16.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-analytics-16.0.1.aar/36be061aa8f161bf6ae90eec66a242a7/AndroidManifest.xml:38:13-69
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:16.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-analytics-16.0.1.aar/36be061aa8f161bf6ae90eec66a242a7/AndroidManifest.xml:35:13-100
+intent-filter#action:name:com.android.vending.INSTALL_REFERRER
+ADDED from [com.google.firebase:firebase-analytics:16.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-analytics-16.0.1.aar/36be061aa8f161bf6ae90eec66a242a7/AndroidManifest.xml:39:13-41:29
+action#com.android.vending.INSTALL_REFERRER
+ADDED from [com.google.firebase:firebase-analytics:16.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-analytics-16.0.1.aar/36be061aa8f161bf6ae90eec66a242a7/AndroidManifest.xml:40:17-79
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:16.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-analytics-16.0.1.aar/36be061aa8f161bf6ae90eec66a242a7/AndroidManifest.xml:40:25-76
+service#com.google.android.gms.measurement.AppMeasurementService
+ADDED from [com.google.firebase:firebase-analytics:16.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-analytics-16.0.1.aar/36be061aa8f161bf6ae90eec66a242a7/AndroidManifest.xml:44:9-47:40
+	android:enabled
+		ADDED from [com.google.firebase:firebase-analytics:16.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-analytics-16.0.1.aar/36be061aa8f161bf6ae90eec66a242a7/AndroidManifest.xml:46:13-35
+	android:exported
+		ADDED from [com.google.firebase:firebase-analytics:16.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-analytics-16.0.1.aar/36be061aa8f161bf6ae90eec66a242a7/AndroidManifest.xml:47:13-37
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:16.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-analytics-16.0.1.aar/36be061aa8f161bf6ae90eec66a242a7/AndroidManifest.xml:45:13-84
+service#com.google.android.gms.measurement.AppMeasurementJobService
+ADDED from [com.google.firebase:firebase-analytics:16.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-analytics-16.0.1.aar/36be061aa8f161bf6ae90eec66a242a7/AndroidManifest.xml:48:9-52:72
+	android:enabled
+		ADDED from [com.google.firebase:firebase-analytics:16.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-analytics-16.0.1.aar/36be061aa8f161bf6ae90eec66a242a7/AndroidManifest.xml:50:13-35
+	android:exported
+		ADDED from [com.google.firebase:firebase-analytics:16.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-analytics-16.0.1.aar/36be061aa8f161bf6ae90eec66a242a7/AndroidManifest.xml:51:13-37
+	android:permission
+		ADDED from [com.google.firebase:firebase-analytics:16.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-analytics-16.0.1.aar/36be061aa8f161bf6ae90eec66a242a7/AndroidManifest.xml:52:13-69
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:16.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-analytics-16.0.1.aar/36be061aa8f161bf6ae90eec66a242a7/AndroidManifest.xml:49:13-87
+uses-permission#com.google.android.c2dm.permission.RECEIVE
+ADDED from [com.google.firebase:firebase-iid:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-iid-16.0.0.aar/fc21342ce757f40c894af5ca83a8d5c2/AndroidManifest.xml:26:5-82
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-iid-16.0.0.aar/fc21342ce757f40c894af5ca83a8d5c2/AndroidManifest.xml:26:22-79
+permission#${applicationId}.permission.C2D_MESSAGE
+ADDED from [com.google.firebase:firebase-iid:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-iid-16.0.0.aar/fc21342ce757f40c894af5ca83a8d5c2/AndroidManifest.xml:28:5-30:47
+	android:protectionLevel
+		ADDED from [com.google.firebase:firebase-iid:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-iid-16.0.0.aar/fc21342ce757f40c894af5ca83a8d5c2/AndroidManifest.xml:30:9-44
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-iid-16.0.0.aar/fc21342ce757f40c894af5ca83a8d5c2/AndroidManifest.xml:29:9-63
+permission#ca.sykesdev.sheridango.permission.C2D_MESSAGE
+ADDED from [com.google.firebase:firebase-iid:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-iid-16.0.0.aar/fc21342ce757f40c894af5ca83a8d5c2/AndroidManifest.xml:28:5-30:47
+	android:protectionLevel
+		ADDED from [com.google.firebase:firebase-iid:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-iid-16.0.0.aar/fc21342ce757f40c894af5ca83a8d5c2/AndroidManifest.xml:30:9-44
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-iid-16.0.0.aar/fc21342ce757f40c894af5ca83a8d5c2/AndroidManifest.xml:29:9-63
+uses-permission#${applicationId}.permission.C2D_MESSAGE
+ADDED from [com.google.firebase:firebase-iid:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-iid-16.0.0.aar/fc21342ce757f40c894af5ca83a8d5c2/AndroidManifest.xml:32:5-79
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-iid-16.0.0.aar/fc21342ce757f40c894af5ca83a8d5c2/AndroidManifest.xml:32:22-76
+uses-permission#ca.sykesdev.sheridango.permission.C2D_MESSAGE
+ADDED from [com.google.firebase:firebase-iid:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-iid-16.0.0.aar/fc21342ce757f40c894af5ca83a8d5c2/AndroidManifest.xml:32:5-79
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-iid-16.0.0.aar/fc21342ce757f40c894af5ca83a8d5c2/AndroidManifest.xml:32:22-76
+meta-data#com.google.firebase.components:com.google.firebase.iid.Registrar
+ADDED from [com.google.firebase:firebase-iid:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-iid-16.0.0.aar/fc21342ce757f40c894af5ca83a8d5c2/AndroidManifest.xml:36:13-38:85
+	android:value
+		ADDED from [com.google.firebase:firebase-iid:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-iid-16.0.0.aar/fc21342ce757f40c894af5ca83a8d5c2/AndroidManifest.xml:38:17-82
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-iid-16.0.0.aar/fc21342ce757f40c894af5ca83a8d5c2/AndroidManifest.xml:37:17-96
+receiver#com.google.firebase.iid.FirebaseInstanceIdReceiver
+ADDED from [com.google.firebase:firebase-iid:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-iid-16.0.0.aar/fc21342ce757f40c894af5ca83a8d5c2/AndroidManifest.xml:41:9-50:20
+	android:exported
+		ADDED from [com.google.firebase:firebase-iid:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-iid-16.0.0.aar/fc21342ce757f40c894af5ca83a8d5c2/AndroidManifest.xml:43:13-36
+	android:permission
+		ADDED from [com.google.firebase:firebase-iid:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-iid-16.0.0.aar/fc21342ce757f40c894af5ca83a8d5c2/AndroidManifest.xml:44:13-73
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-iid-16.0.0.aar/fc21342ce757f40c894af5ca83a8d5c2/AndroidManifest.xml:42:13-78
+intent-filter#action:name:com.google.android.c2dm.intent.RECEIVE+category:name:${applicationId}
+ADDED from [com.google.firebase:firebase-iid:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-iid-16.0.0.aar/fc21342ce757f40c894af5ca83a8d5c2/AndroidManifest.xml:45:13-49:29
+intent-filter#action:name:com.google.android.c2dm.intent.RECEIVE+category:name:ca.sykesdev.sheridango
+ADDED from [com.google.firebase:firebase-iid:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-iid-16.0.0.aar/fc21342ce757f40c894af5ca83a8d5c2/AndroidManifest.xml:45:13-49:29
+action#com.google.android.c2dm.intent.RECEIVE
+ADDED from [com.google.firebase:firebase-iid:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-iid-16.0.0.aar/fc21342ce757f40c894af5ca83a8d5c2/AndroidManifest.xml:46:17-81
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-iid-16.0.0.aar/fc21342ce757f40c894af5ca83a8d5c2/AndroidManifest.xml:46:25-78
+category#${applicationId}
+ADDED from [com.google.firebase:firebase-iid:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-iid-16.0.0.aar/fc21342ce757f40c894af5ca83a8d5c2/AndroidManifest.xml:48:17-61
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-iid-16.0.0.aar/fc21342ce757f40c894af5ca83a8d5c2/AndroidManifest.xml:48:27-58
+category#ca.sykesdev.sheridango
+ADDED from [com.google.firebase:firebase-iid:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-iid-16.0.0.aar/fc21342ce757f40c894af5ca83a8d5c2/AndroidManifest.xml:48:17-61
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-iid-16.0.0.aar/fc21342ce757f40c894af5ca83a8d5c2/AndroidManifest.xml:48:27-58
+service#com.google.firebase.iid.FirebaseInstanceIdService
+ADDED from [com.google.firebase:firebase-iid:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-iid-16.0.0.aar/fc21342ce757f40c894af5ca83a8d5c2/AndroidManifest.xml:56:9-62:19
+	android:exported
+		ADDED from [com.google.firebase:firebase-iid:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-iid-16.0.0.aar/fc21342ce757f40c894af5ca83a8d5c2/AndroidManifest.xml:58:13-36
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-iid-16.0.0.aar/fc21342ce757f40c894af5ca83a8d5c2/AndroidManifest.xml:57:13-77
+intent-filter#action:name:com.google.firebase.INSTANCE_ID_EVENT
+ADDED from [com.google.firebase:firebase-iid:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-iid-16.0.0.aar/fc21342ce757f40c894af5ca83a8d5c2/AndroidManifest.xml:59:13-61:29
+	android:priority
+		ADDED from [com.google.firebase:firebase-iid:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-iid-16.0.0.aar/fc21342ce757f40c894af5ca83a8d5c2/AndroidManifest.xml:59:28-51
+action#com.google.firebase.INSTANCE_ID_EVENT
+ADDED from [com.google.firebase:firebase-iid:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-iid-16.0.0.aar/fc21342ce757f40c894af5ca83a8d5c2/AndroidManifest.xml:60:17-80
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-iid-16.0.0.aar/fc21342ce757f40c894af5ca83a8d5c2/AndroidManifest.xml:60:25-77
+provider#com.google.firebase.provider.FirebaseInitProvider
+ADDED from [com.google.firebase:firebase-common:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-common-16.0.0.aar/264e2f1b8cff86d1217a521e799bd107/AndroidManifest.xml:9:9-13:39
+	android:authorities
+		ADDED from [com.google.firebase:firebase-common:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-common-16.0.0.aar/264e2f1b8cff86d1217a521e799bd107/AndroidManifest.xml:11:13-72
+	android:exported
+		ADDED from [com.google.firebase:firebase-common:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-common-16.0.0.aar/264e2f1b8cff86d1217a521e799bd107/AndroidManifest.xml:12:13-37
+	android:initOrder
+		ADDED from [com.google.firebase:firebase-common:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-common-16.0.0.aar/264e2f1b8cff86d1217a521e799bd107/AndroidManifest.xml:13:13-36
+	android:name
+		ADDED from [com.google.firebase:firebase-common:16.0.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/firebase-common-16.0.0.aar/264e2f1b8cff86d1217a521e799bd107/AndroidManifest.xml:10:13-77
+activity#com.google.android.gms.common.api.GoogleApiActivity
+ADDED from [com.google.android.gms:play-services-base:15.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/play-services-base-15.0.1.aar/d1729ee360d01b5313cdca009ee2c0cb/AndroidManifest.xml:23:9-26:75
+	android:exported
+		ADDED from [com.google.android.gms:play-services-base:15.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/play-services-base-15.0.1.aar/d1729ee360d01b5313cdca009ee2c0cb/AndroidManifest.xml:25:13-37
+	android:theme
+		ADDED from [com.google.android.gms:play-services-base:15.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/play-services-base-15.0.1.aar/d1729ee360d01b5313cdca009ee2c0cb/AndroidManifest.xml:26:13-72
+	android:name
+		ADDED from [com.google.android.gms:play-services-base:15.0.1] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/play-services-base-15.0.1.aar/d1729ee360d01b5313cdca009ee2c0cb/AndroidManifest.xml:24:13-79
+meta-data#android.support.VERSION
+ADDED from [com.android.support:support-v4:26.1.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/176242c7549dc8f69328e75669e85a2a/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-media-compat:26.1.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/afa1e137bd5b2d9b9371aa9e61783ce5/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-media-compat:26.1.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/afa1e137bd5b2d9b9371aa9e61783ce5/AndroidManifest.xml:26:9-28:38
+	android:value
+		ADDED from [com.android.support:support-v4:26.1.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/176242c7549dc8f69328e75669e85a2a/AndroidManifest.xml:28:13-35
+	android:name
+		ADDED from [com.android.support:support-v4:26.1.0] /Users/bensykes/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/176242c7549dc8f69328e75669e85a2a/AndroidManifest.xml:27:13-51

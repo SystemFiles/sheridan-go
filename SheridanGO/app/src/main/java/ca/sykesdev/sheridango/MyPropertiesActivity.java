@@ -20,8 +20,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-import ca.sykesdev.sheridango.model.ClickListener;
-import ca.sykesdev.sheridango.model.MyPropertysRecyclerAdapter;
+import ca.sykesdev.sheridango.interfaces.ClickListener;
+import ca.sykesdev.sheridango.adapter.MyPropertysRecyclerAdapter;
 import ca.sykesdev.sheridango.model.Property;
 
 public class MyPropertiesActivity extends AppCompatActivity {
