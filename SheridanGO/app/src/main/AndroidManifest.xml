@@ -32,7 +32,7 @@
         <!-- API KEY -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyD0EHvl2GqAR8-_GgkkGXdvjLkE6e3_agE" />
+            android:value="REMOVED FOR SECURITY REASONS" />
 
         <activity android:name=".ShowPropertiesActivity"
             android:screenOrientation="portrait" />
